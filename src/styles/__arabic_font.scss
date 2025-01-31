@@ -1,0 +1,38 @@
+// src/styles/arabic-font.scss
+
+// Black (Extra Bold) font
+@font-face {
+  font-family: "ArabicFont";
+  src: url("/public/ArabicFonts/frutigerltarabic75black.ttf") format("truetype");
+  font-weight: 900; // Extra bold or Black font
+  font-style: normal;
+}
+
+// Bold font
+@font-face {
+  font-family: "ArabicFont";
+  src: url("/public/ArabicFonts/FrutigerLTArabic65Bold.ttf") format("truetype");
+  font-weight: 700; // Bold
+  font-style: normal;
+}
+
+// Regular (Roman) font
+@font-face {
+  font-family: "ArabicFont";
+  src: url("/public/ArabicFonts/FrutigerLTArabic55Roman.ttf") format("truetype");
+  font-weight: 400; // Normal weight
+  font-style: normal;
+}
+
+// Light font
+@font-face {
+  font-family: "ArabicFont";
+  src: url("/public/ArabicFonts/FrutigerLTArabic45Light.ttf") format("truetype");
+  font-weight: 300; // Light
+  font-style: normal;
+}
+
+// Applying the Arabic font class
+.arabic-font {
+  font-family: "ArabicFont", sans-serif;
+}

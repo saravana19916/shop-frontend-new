@@ -1,0 +1,51 @@
+.react-international-phone-input-container .react-international-phone-input {
+  width: 100% !important;
+  line-height: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  --tw-border-opacity: 1;
+  border-color: rgba(var(--c-neutral-200), var(--tw-border-opacity));
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  /* border-radius: 1rem; */
+  height: 2.75rem;
+  display: block;
+}
+.react-international-phone-input-container {
+  flex: 1 !important;
+}
+.react-international-phone-input-container
+  .react-international-phone-country-selector-button {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  --tw-border-opacity: 1;
+  border-color: rgba(var(--c-neutral-200), var(--tw-border-opacity));
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  /* border-radius: 1rem; */
+  height: 2.75rem;
+  display: block;
+}
+.dark {
+  .react-international-phone-input-container .react-international-phone-input {
+    --tw-bg-opacity: 1;
+    background-color: rgba(var(--c-neutral-900), var(--tw-bg-opacity));
+    --tw-border-opacity: 1;
+    border-color: rgba(var(--c-neutral-700), var(--tw-border-opacity));
+    color: white;
+  }
+  .react-international-phone-input-container
+    .react-international-phone-country-selector-button {
+    --tw-bg-opacity: 1;
+    background-color: rgba(var(--c-neutral-900), var(--tw-bg-opacity));
+    --tw-border-opacity: 1;
+    border-color: rgba(var(--c-neutral-700), var(--tw-border-opacity));
+  }
+}

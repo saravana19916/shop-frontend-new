@@ -1,0 +1,20 @@
+/* Remove default focus styles */
+.sc-gswNZR.fnPrGW {
+  border: none !important; /* Removes border */
+  outline: none !important; /* Removes focus outline */
+  font-weight: 500;
+  font-size: "24px";
+  margin-left: -12px !important;
+}
+.sc-gswNZR.fnPrGW::before,
+.sc-gswNZR.fnPrGW::after {
+  content: none !important;
+}
+
+.sc-gswNZR.fnPrGW:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.sc-dkrFOg.cgVVrF {
+  margin-left: -12px !important;
+}
