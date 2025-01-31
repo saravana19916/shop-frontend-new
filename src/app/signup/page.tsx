@@ -1,9 +1,9 @@
 "use client";
 import React, { FC, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import facebookSvg from "@/images/Facebook.svg";
-import twitterSvg from "@/images/Twitter.svg";
 import googleSvg from "@/images/Google.svg";
+import appleSvg from "@/images/Apple.svg";
+import appleWhiteSvg from "@/images/AppleWhite.svg";
 import Input from "@/shared/Input";
 import ButtonPrimary from "@/shared/ButtonPrimary";
 import Image from "next/image";
@@ -21,6 +21,8 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useTranslation } from "react-i18next";
 import ButtonSecondary from "@/shared/ButtonSecondary";
+import { useThemeMode } from "@/utils/useThemeMode";
+import SocialMediaLoginComponent from "../login/SocialMediaLoginComponent";
 
 export interface PageSignUpProps {}
 
@@ -59,24 +61,22 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
     );
   };
 
+  const { isDarkMode } = useThemeMode();
+
   const loginSocials = [
     {
-      name: "continueWithFacebook",
-      href: "https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNzExNDI1OTI0LCJjYWxsc2l0ZV9pZCI6MjY5NTQ4NDUzMDcyMDk1MX0%3D",
-      icon: facebookSvg,
-      brand: "facebook",
-    },
-    {
-      name: "continueWithTwitter",
-      href: "https://twitter.com/i/flow/login",
-      icon: twitterSvg,
-      brand: "twitter",
-    },
-    {
-      name: "continueWithGoogle",
-      href: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dgoogle%2Blogin%26oq%3Dgoogle%2Blogin%26gs_lcrp%3DEgZjaHJvbWUqDAgAEEUYOxixAxiABDIMCAAQRRg7GLEDGIAEMgoIARAAGLEDGIAEMgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgYIBRBFGDwyBggGEEUYPDIGCAcQRRg8qAIAsAIA%26pf%3Dcs%26sourceid%3Dchrome%26ie%3DUTF-8&ec=GAZAAQ&hl=en&passive=true&ifkv=ARZ0qKKzY5ALBhuDbptGMBlt806ZPqs4WzPODQTdLDEMZHrjaT1eU283-vMcOhp5wyFXBQXsKjZsBg&theme=mn&ddm=0&flowName=GlifWebSignIn&flowEntry=ServiceLogin",
-      icon: googleSvg,
+      label: "Sign in with",
+      title: "Apple",
+      driver: "apple",
+      icon: isDarkMode ? appleWhiteSvg : appleSvg,
       brand: "apple",
+    },
+    {
+      label: "Sign in with",
+      title: "Google",
+      driver: "google",
+      icon: googleSvg,
+      brand: "google",
     },
   ];
 
@@ -116,32 +116,20 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
   return (
     <div className={`nc-PageSignUp`}>
       <div className="container mb-24 lg:mb-32">
-        <h2 className="my-20 flex items-center text-3xl leading-[115%] md:text-5xl md:leading-[115%] font-semibold text-neutral-900 dark:text-neutral-100 justify-center">
+        <h2 className="my-14 flex items-center text-3xl leading-[115%] md:text-5xl md:leading-[115%] font-semibold text-neutral-900 dark:text-neutral-100 justify-center">
           {t("signUp")}
         </h2>
         <div className="max-w-md mx-auto space-y-6 ">
-          <div className="grid gap-3">
-            {loginSocials.map((item, index) => (
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                key={index}
-                href={item.href}
-                className="nc-will-change-transform flex justify-center items-center w-full rounded-full bg-white dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 px-4 py-3 transform transition-transform sm:px-6 hover:translate-y-[-2px]"
-              >
-                <Image
-                  className="flex-shrink-0"
-                  src={item.icon}
-                  alt={item.name}
-                />
-                &nbsp;&nbsp;&nbsp;
-                <h3 className="text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm">
-                  {t(item.name)}
-                  {item.brand === "apple" && <>&nbsp; &nbsp; &nbsp;</>}
-                  {item.brand === "google" && <>&nbsp; &nbsp; </>}
-                  {item.brand === "twitter" && <>&nbsp; &nbsp; &nbsp;</>}
-                </h3>
-              </a>
+          <div className="grid gap-2">
+            {loginSocials?.map((social) => (
+              <SocialMediaLoginComponent
+                key={social.title}
+                label={social?.label}
+                title={social?.title}
+                icon={social?.icon}
+                driver={social?.driver}
+                brand={social?.brand}
+              />
             ))}
           </div>
           {/* OR */}
@@ -374,7 +362,7 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
                   {t("phoneNumber")} <span className="text-red-600">*</span>
                 </span>
               </span>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 mt-1">
               <PhoneInput
                 autoFormat={false}
                 country={"us"}
@@ -393,7 +381,7 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
                 disabled={isLoading}
               />
               <div
-                  className="font-semibold text-xs bg-neutral-100 rounded-full px-9 py-3 cursor-pointer dark:text-black"
+                  className="font-semibold text-xs bg-neutral-100 rounded-full px-9 py-3.5 cursor-pointer dark:text-black"
                 >
                   Verify
                 </div>
@@ -423,7 +411,7 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
             {response && response!.error && response!.error!.agree_terms && (
               <div className="text-red-600"> {response.error.agree_terms} </div>
             )}
-            <div className="pt-2">
+            <div className="pt-2 text-end">
               <ButtonSecondary
                 type="submit"
                 rounded="rounded-full"

@@ -176,11 +176,13 @@ const LoginComponent: FC<IProps> = ({
             <ButtonSecondary
               className="mb-5 w-full text-sm sm:text-base border border-neutral-200 dark:border-neutral-700"
               rounded="rounded-full"
-              // bgColor="bg-zinc-100"
+              bgColor="bg-zinc-100"
+              textColor="dark:text-black"
+              borderColor="border-transparent"
               href="/home"
             >
               <h3 className="text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm">
-                Continue as <span className="font-bold ms-2">Guest</span>
+                Continue as<span className="font-bold ms-2">Guest</span>
               </h3>
             </ButtonSecondary>
           </div>
