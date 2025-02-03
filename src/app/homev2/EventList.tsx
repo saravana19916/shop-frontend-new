@@ -173,52 +173,52 @@ const EventList: FC<EventListProps> = ({
           SkeletonCard(categoryCardType)
         ) : (
           <div>
-            <div className="mb-6 lg:mb-8 space-y-3">
+            <div className="mb-6 lg:mb-8">
               <h3 className="text-3xl font-bold text-center">
                 {data && data!.title ? data.title : ""}
               </h3>
 
-              <p className="block text-sm text-grey-700 font-semibold dark:text-neutral-400 mt-1.5 text-center">
+              <p className="block text-[#677489] text-lg font-normal mt-3 text-center">
                 {data && data!.subtitle ? data.subtitle : ""}
               </p>
 
-              <div className="flex justify-center items-center space-x-3">
+              <div className="flex justify-center items-center space-x-3 mt-5">
                 {categoryCardType === "specials" ||
                 categoryCardType === "everything" ? (
                   <>
                     <Select
                       className={`pl-4 !w-48 !rounded-full ${
                         categoryCardType === "everything"
-                          ? "bg-white"
+                          ? "!bg-white"
                           : "!bg-gray-100"
-                      }`}
+                      } border-neutral-200 text-[#101729] text-sm font-medium`}
                     >
                       <option value="">abu dhabi</option>
                     </Select>
                     <Select
                       className={`pl-4 !w-48 !rounded-full ${
                         categoryCardType === "everything"
-                          ? "bg-white"
+                          ? "!bg-white"
                           : "!bg-gray-100"
-                      }`}
+                      } border-neutral-200 text-[#101729] text-sm font-medium`}
                     >
                       <option value="">events</option>
                     </Select>
                     <Select
                       className={`pl-4 !w-48 !rounded-full ${
                         categoryCardType === "everything"
-                          ? "bg-white"
+                          ? "!bg-white"
                           : "!bg-gray-100"
-                      }`}
+                      } border-neutral-200 text-[#101729] text-sm font-medium`}
                     >
                       <option value="">concerts</option>
                     </Select>
                     <Select
                       className={`pl-4 !w-48 !rounded-full ${
                         categoryCardType === "everything"
-                          ? "bg-white"
+                          ? "!bg-white"
                           : "!bg-gray-100"
-                      }`}
+                      } border-neutral-200 text-[#101729] text-sm font-medium`}
                     >
                       <option value="">suitable for</option>
                     </Select>
@@ -226,8 +226,8 @@ const EventList: FC<EventListProps> = ({
                 ) : (
                   <Select
                     className={`pl-4 !w-48 !rounded-full ${
-                      categoryCardType === "top10" ? "bg-white" : "!bg-gray-100"
-                    }`}
+                      categoryCardType === "top10" ? "!bg-white" : "!bg-gray-100"
+                    } !border-neutral-200 !text-[#101729] !text-sm !font-medium`}
                   >
                     <option value="">London</option>
                   </Select>
