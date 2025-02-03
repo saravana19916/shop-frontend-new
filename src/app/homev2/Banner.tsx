@@ -145,31 +145,23 @@ const Banner: FC<BannerProps> = ({ className = "" }) => {
                 <i className="ml-5 las la-heart text-4xl text-primary-6000"></i>
               </span>
             </div>
-            <div className="grid grid-cols-4 gap-2 w-full lg:w-10/12 mt-0 md:mt-5">
-              <span className="text-black text-xs bg-white h-8 flex items-center justify-center rounded-full">
-                ticket
-              </span>
-              <span className="text-black text-xs bg-white h-8 flex items-center justify-center rounded-full">
-                event
-              </span>
-              <span className="text-black text-xs bg-white h-8 flex items-center justify-center rounded-full">
-                performing Arts
-              </span>
-              <span className="text-black text-xs bg-white h-8 flex items-center justify-center rounded-full">
-                seated
-              </span>
-              <span className="text-black text-xs bg-white h-8 flex items-center justify-center rounded-full">
-                open age
-              </span>
-              <span className="text-black text-xs bg-white h-8 flex items-center justify-center rounded-full">
-                no smoking
-              </span>
-              <span className="text-black text-xs bg-white h-8 flex items-center justify-center rounded-full">
-                kids friendly
-              </span>
-              <span className="text-black text-xs bg-white h-8 flex items-center justify-center rounded-full">
-                family friendly
-              </span>
+            <div className="flex flex-wrap gap-2 w-full lg:w-10/12 mt-0 md:mt-5">
+              {[
+                "ticket",
+                "Access to Gold Area",
+                "Access to General Food Court",
+                "performing Arts",
+                "seated",
+                "open age",
+                "no smoking",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="text-black text-xs bg-white h-8 px-3 flex items-center justify-center rounded-full border border-gray-300"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
           <div className="w-full hidden xl:block">
