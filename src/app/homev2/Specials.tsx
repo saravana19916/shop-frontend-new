@@ -73,9 +73,15 @@ const Specials: FC<SpecialsProps> = ({
             primary
           </span>
           <div className="relative">
-            <span className="absolute font-bold text-white text-xs z-20 text-center flex items-center justify-center rounded-lg right-3 top-3">
-              <i className="las la-heart text-4xl"></i>
-            </span>
+          <BtnLikeIcon
+            isLiked={like}
+            className="absolute right-6 top-2 z-[1]"
+            event={event}
+            wishlistEvents={wishlistEvents}
+            refetchWishList={refetchWishList}
+            user={user}
+            isHomev2={true}
+          />
           </div>
 
           <Image
@@ -88,14 +94,6 @@ const Specials: FC<SpecialsProps> = ({
           />
           <span className="opacity-0 group-hover:opacity-100 absolute inset-0 bg-black bg-opacity-10 transition-opacity"></span>
         </div>
-        <BtnLikeIcon
-          isLiked={like}
-          className="absolute right-6 top-2 z-[1]"
-          event={event}
-          wishlistEvents={wishlistEvents}
-          refetchWishList={refetchWishList}
-          user={user}
-        />
         <div className="flex">
           <div onClick={_handleRedirect} className="mt-4 px-2 truncate w-3/5">
             <span
@@ -121,7 +119,7 @@ const Specials: FC<SpecialsProps> = ({
             className="flex justify-end px-2 w-2/5"
           >
             <Image
-              className="-mt-4 w-16"
+              className="-mt-4 w-25"
               src={OfferTagJpg}
               alt="Offer Tag"
               priority

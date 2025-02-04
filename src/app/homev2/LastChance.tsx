@@ -69,9 +69,15 @@ const LastChance: FC<LastChanceProps> = ({
           primary
         </span>
         <div className="relative">
-          <span className="absolute font-bold text-white text-xs z-20 text-center flex items-center justify-center rounded-lg right-3 top-3">
-            <i className="las la-heart text-4xl"></i>
-          </span>
+        <BtnLikeIcon
+            isLiked={like}
+            className="absolute right-6 top-2 z-[1]"
+            event={event}
+            wishlistEvents={wishlistEvents}
+            refetchWishList={refetchWishList}
+            user={user}
+            isHomev2={true}
+          />
         </div>
 
         <Image
@@ -84,14 +90,6 @@ const LastChance: FC<LastChanceProps> = ({
         />
         <span className="opacity-0 group-hover:opacity-100 absolute inset-0 bg-black bg-opacity-10 transition-opacity"></span>
       </div>
-      <BtnLikeIcon
-        isLiked={like}
-        className="absolute right-6 top-2 z-[1]"
-        event={event}
-        wishlistEvents={wishlistEvents}
-        refetchWishList={refetchWishList}
-        user={user}
-      />
       <div onClick={_handleRedirect} className="mt-4 px-2 truncate text-center">
         <span
           className={`block mt-1 text-xs text-primary-6000 dark:text-neutral-400 mb-2`}

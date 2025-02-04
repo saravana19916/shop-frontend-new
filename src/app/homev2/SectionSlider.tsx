@@ -64,7 +64,7 @@ const SectionSlider: FC<SectionSliderProps> = ({
   const [numberOfItems, setNumberOfItem] = useState(0);
   const [imageHeight, setImageHeight] = useState(0);
   const windowWidth = useWindowSize().width;
-  
+
   useEffect(() => {
     if (windowWidth < 576) {
       return setNumberOfItem(1);
@@ -226,7 +226,7 @@ const SectionSlider: FC<SectionSliderProps> = ({
                           ? "translate(-80%, -50%)"
                           : "translate(-80%, -50%)"
                       }`,
-                      top: `calc(${imageHeight / 2}px)`,
+                       top: `calc((${imageHeight}px + 130px) / 2)`
                     }}
                     onClick={() => changeItemId(currentIndex - 1)}
                     className="w-9 h-9 xl:w-12 xl:h-12 text-lg absolute xl:-left-6 -left-3  z-[1]"
@@ -245,7 +245,7 @@ const SectionSlider: FC<SectionSliderProps> = ({
                           ? "translate(80%, -50%)"
                           : "translate(80%, -50%)"
                       }`,
-                      top: `calc(${imageHeight / 2}px)`,
+                       top: `calc((${imageHeight}px + 130px) / 2)`
                     }}
                     onClick={() => changeItemId(currentIndex + 1)}
                     className="w-9 h-9 xl:w-12 xl:h-12 text-lg absolute  xl:-right-6 -right-3 z-[1]"
@@ -318,14 +318,14 @@ const SectionSlider: FC<SectionSliderProps> = ({
                           ? "translate(-80%, -50%)"
                           : "translate(-5%, -50%)"
                       }`,
-                      top: `calc(${imageHeight / 2}px)`,
+                       top: `calc((${imageHeight}px + 130px) / 2)`
                     }}
                     onClick={() => changeItemId(currentIndex - 1)}
                     className="w-9 h-9 xl:w-12 xl:h-12 text-lg absolute xl:-left-6 -left-3  z-[1]"
                   />
                 ) : null}
 
-                {(eventList.length > currentIndex + numberOfItems) && 
+                {(eventList.length > currentIndex + numberOfItems) &&
                   (windowWidth < 1984) ? (
                   <NextBtn
                     style={{
@@ -338,7 +338,7 @@ const SectionSlider: FC<SectionSliderProps> = ({
                           ? "translate(80%, -50%)"
                           : "translate(-20%, -50%)"
                       }`,
-                      top: `calc(${imageHeight / 2}px)`,
+                       top: `calc((${imageHeight}px + 130px) / 2)`
                     }}
                     onClick={() => changeItemId(currentIndex + 1)}
                     className="w-9 h-9 xl:w-12 xl:h-12 text-lg absolute xl:-right-6 -right-3 z-[1]"
@@ -407,7 +407,7 @@ const SectionSlider: FC<SectionSliderProps> = ({
                           ? "translate(-80%, -50%)"
                           : "translate(-80%, -50%)"
                       }`,
-                      top: `calc(${imageHeight / 2}px)`,
+                       top: `calc((${imageHeight}px + 130px) / 2)`
                     }}
                     onClick={() => changeItemId(currentIndex - 1)}
                     className="w-9 h-9 xl:w-12 xl:h-12 text-lg absolute xl:-left-6 -left-3  z-[1]"
@@ -426,7 +426,7 @@ const SectionSlider: FC<SectionSliderProps> = ({
                           ? "translate(80%, -50%)"
                           : "translate(80%, -50%)"
                       }`,
-                      top: `calc(${imageHeight / 2}px)`,
+                       top: `calc((${imageHeight}px + 130px) / 2)`
                     }}
                     onClick={() => changeItemId(currentIndex + 1)}
                     className="w-9 h-9 xl:w-12 xl:h-12 text-lg absolute  xl:-right-6 -right-3 z-[1]"

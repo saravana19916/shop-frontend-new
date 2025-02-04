@@ -15,6 +15,7 @@ export interface BtnLikeIconProps {
   wishlistEvents?: IWishListEvent[];
   refetchWishList?: () => void;
   user?: any;
+  isHomev2?: boolean;
 }
 
 const BtnLikeIcon: FC<BtnLikeIconProps> = ({
@@ -25,61 +26,49 @@ const BtnLikeIcon: FC<BtnLikeIconProps> = ({
   wishlistEvents,
   refetchWishList,
   user,
+  isHomev2,
 }) => {
   const [likedState, setLikedState] = useState(isLiked);
-  // const [wishlist, setWishlist] = useState<Event[]>([]);
+
   const handleLiked = async () => {
     const wishlist = await WishlistService?.handleWishlist({
       event_id: event?.event_id,
     });
+
     if (wishlist?.status === 200 || wishlist?.status === 201) {
       const eventName = event?.event?.identifier
         ? toTitleCase(event?.event?.identifier)
-        : undefined;
-      const toastMessage = `${eventName ?? "Event"} ${
-        likedState ? "removed from" : "add to"
+        : "Event";
+      const toastMessage = `${eventName} ${
+        likedState ? "removed from" : "added to"
       } wishlist successfully!`;
-      toast?.dark(toastMessage);
-      refetchWishList && refetchWishList();
+      toast.dark(toastMessage);
+      refetchWishList?.();
       setLikedState((prev) => !prev);
     } else {
-      toast?.error(
-        wishlist?.data?.error?.message || "Unable to wishlist the event!"
+      toast.error(
+        wishlist?.data?.error?.message || "Unable to update the wishlist!"
       );
     }
   };
+
   useEffect(() => {
-    // if (window.location?.pathname !== "/account-wishlist") {
-    // const storedItems = JSON.parse(
-    // ) as Event[];
-    // if (storedItems.length > 0) {
-    //   setWishlist(storedItems);
-    //   const check = wishlist?.filter(
-    //     (item: Event) => item.event_id == event.event_id
-    //   ).length;
-    //   if (check > 0) {
-    //     setLikedState(true);
-    //   } else {
-    //     setLikedState(false);
-    //   }
-    // }
-    if (wishlistEvents?.length > 0) {
-      const check = wishlistEvents?.find(
-        (item: IWishListEvent) => item.event_id === event?.event_id
+    if (wishlistEvents?.length) {
+      const isEventLiked = wishlistEvents.some(
+        (item) => item.event_id === event?.event_id
       );
-      setLikedState(() => (check ? true : false));
+      setLikedState(isEventLiked);
     }
-    // }
   }, [event, wishlistEvents]);
 
   return (
     <>
-      {user && user?.user ? (
-        <>
+      {user?.user &&
+        (!isHomev2 ? (
           <div
             className={`nc-BtnLikeIcon w-8 h-8 flex items-center justify-center rounded-full cursor-pointer ${
               likedState ? "nc-BtnLikeIcon--liked" : ""
-            }  ${colorClass} ${className}`}
+            } ${colorClass} ${className}`}
             data-nc-id="BtnLikeIcon"
             title="Save"
             onClick={handleLiked}
@@ -99,10 +88,18 @@ const BtnLikeIcon: FC<BtnLikeIconProps> = ({
               />
             </svg>
           </div>
-        </>
-      ) : (
-        <></>
-      )}
+        ) : (
+          <span
+            className="absolute font-bold text-white text-xs z-20 text-center flex items-center justify-center rounded-lg right-3 top-3"
+            onClick={handleLiked}
+          >
+            <i
+              className={`las la-heart text-4xl ${
+                likedState ? "text-red-600" : ""
+              }`}
+            ></i>
+          </span>
+        ))}
     </>
   );
 };
