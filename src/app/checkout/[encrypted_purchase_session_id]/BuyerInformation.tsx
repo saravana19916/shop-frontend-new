@@ -175,7 +175,7 @@ const BuyerInformation: FC<IProps> = ({
               value={values.userDetails?.userPhoneNumber || ""}
               autoFormat={true}
               placeholder=""
-              inputClass="rounded-full flex-grow py-6 px-6 focus:outline-none focus:ring-2 focus:ring-primary-50 focus:border-primary-50 placeholder:text-gray-450 placeholder:opacity-80"
+              inputClass="rounded-full flex-grow py-6 px-6 focus:!ring-1 focus:!ring-primary-50 focus:!border-primary-50 placeholder:text-gray-450 placeholder:opacity-80 dark:!border-neutral-700"
               // inputClass="rounded w-full py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-50 focus:border-primary-50 placeholder:text-gray-450 placeholder:opacity-80"
               inputStyle={{
                 // minWidth: "100%",
@@ -189,11 +189,10 @@ const BuyerInformation: FC<IProps> = ({
               buttonStyle={{
                 borderStartStartRadius: "50px",
                 borderEndStartRadius: "50px",
-                backgroundColor: "#fff",
-                borderInlineEnd: 0,
                 paddingLeft: "10px",
-                borderColor: "#e5e5e5",
+                paddingRight: "5px",
               }}
+              buttonClass="!bg-white !border-neutral-200 dark:!bg-neutral-900 dark:!border-neutral-700 pe-1"
               dropdownStyle={{
                 borderRadius: "16px",
               }}
@@ -201,10 +200,6 @@ const BuyerInformation: FC<IProps> = ({
               onChange={(userPhone) => {
                 setFieldValue("userDetails.userPhoneNumber", userPhone);
                 setUserPhone(userPhone);
-              }}
-              onFocus={(e) => {
-                e.target.style.border = "none";
-                e.target.style.outline = "2px solid #FEC9DA";
               }}
               onBlur={(e) => {
                 e.target.style.border = "1px solid #e5e5e5";

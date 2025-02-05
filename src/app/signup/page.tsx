@@ -366,7 +366,7 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
               <PhoneInput
                 autoFormat={false}
                 country={"us"}
-                inputClass="rounded-full w-full !border-neutral-200 !focus:border-primary-300 !dark:border-neutral-200"
+                inputClass="rounded-full w-full !border-neutral-200 focus:!border-primary-200 dark:!border-neutral-700 dark:focus:!ring-primary-6000 dark:focus:!ring-opacity-25"
                 inputStyle={{
                   minWidth: "100%",
                   borderRadius: "50px",
@@ -375,8 +375,9 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
                 buttonStyle={{
                   borderStartStartRadius: "50px",
                   borderEndStartRadius: "50px",
+                  paddingRight: "5px",
                 }}
-                buttonClass="!bg-white pe-1 !border-neutral-200"
+                buttonClass="!bg-white !border-neutral-200 dark:!bg-neutral-900 dark:!border-neutral-700 pe-1"
                 onChange={_handlePhoneNumberChange}
                 disabled={isLoading}
               />
@@ -411,7 +412,7 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
             {response && response!.error && response!.error!.agree_terms && (
               <div className="text-red-600"> {response.error.agree_terms} </div>
             )}
-            <div className="pt-2 text-end">
+            <div className="pt-2">
               <ButtonSecondary
                 type="submit"
                 rounded="rounded-full"

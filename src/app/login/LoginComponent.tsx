@@ -91,20 +91,18 @@ const LoginComponent: FC<IProps> = ({
                 >
                   {showPassword ? (
                     <svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  className="w-6 h-6"
->
-  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-  <circle cx="12" cy="12" r="3" />
-</svg>
-
-                  
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-6 h-6"
+                    >
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
                   ) : (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -181,8 +179,9 @@ const LoginComponent: FC<IProps> = ({
               borderColor="border-transparent"
               href="/home"
             >
-              <h3 className="text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm">
-                Continue as<span className="font-bold ms-2">Guest</span>
+              <h3 className="text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm py-0.5">
+                <>&nbsp; &nbsp; </>Continue as
+                <span className="font-bold ms-2">Guest</span>
               </h3>
             </ButtonSecondary>
           </div>

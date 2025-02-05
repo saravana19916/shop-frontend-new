@@ -12,7 +12,6 @@
 
 .react-tel-input .country-list .country.highlight {
   @apply border border-neutral-200 bg-white dark:bg-neutral-900;
-  color: #ff003e;
 }
 
 .react-tel-input .country-list .country:hover {
@@ -27,7 +26,6 @@
 .react-tel-input .flag-dropdown .selected-flag,
 .react-tel-input .flag-dropdown:hover {
   background: none !important;
-  width: 40px;
 }
 
 .react-tel-input .selected-flag .arrow {
