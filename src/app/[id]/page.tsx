@@ -16,10 +16,12 @@ import eventDetailServices from "@/services/event-detail.services";
 import EventShortDetail from "./EventShortDetail";
 import EventDescriptions from "./EventDescriptions";
 import EventInclusion from "./EventInclusion";
+import EventFloorPlan from "./EventFloorPlan";
 import SectionDateRange from "@/app/(listing-detail)/SectionDateRange";
 import EventAmenities from "./EventAmenities";
 import EventTicketRates from "./EventTicketRates";
 import EventHostInformation from "./EventHostInformation";
+import EventCredit from "./EventCredit";
 import EventLocation from "./EventLocation";
 import EditOrderSummary from "@/app/(listing-detail)/event-detail/EditOrderSummary";
 import BackgroundSection from "@/components/BackgroundSection";
@@ -387,13 +389,15 @@ const EventsPage = ({ params }) => {
                 <EventDescriptions eventDetail={eventDetail} />
                 <EventAvailabilityDates eventDetail={eventDetail} />
                 <EventTicketRates eventDetail={eventDetail} />
-                {/* <EventFloorPlan eventDetail={eventDetail} /> */}
                 <EventInclusion eventDetail={eventDetail} />
+
+                <EventFloorPlan eventDetail={eventDetail} />
 
                 <EventLocation eventDetail={eventDetail} />
                 <EventAmenities eventDetail={eventDetail} />
                 <EventThingsToKnow eventDetail={eventDetail} />
                 <EventHostInformation eventDetail={eventDetail} />
+                <EventCredit eventDetail={eventDetail} />
               </div>
             </div>
             <div className="flex-grow mt-7 lg:mt-0">

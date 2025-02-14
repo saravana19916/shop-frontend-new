@@ -10,6 +10,109 @@ export interface EventAmenitiesProps {
 }
 const EventAmenities: FC<EventAmenitiesProps> = ({ eventDetail }) => {
   const { t } = useTranslation();
+  const [showMoreAmenities, setShowMoreAmenities] = useState(false);
+  const amenities = [
+    {
+      id: "concessionStands",
+      label: "Concession Stands",
+      value: "Concession Stands",
+    },
+    {
+      id: "hotFood",
+      label: "Hot Food",
+      value: "Hot Food",
+    },
+    {
+      id: "coldFood",
+      label: "Cold Food",
+      value: "Cold Food",
+    },
+    {
+      id: "smoking",
+      label: "Smoking",
+      value: "Smoking",
+    },
+    {
+      id: "nonSmoking",
+      label: "Non Smoking",
+      value: "Non Smoking",
+    },
+    {
+      id: "freeParking",
+      label: "Free Parking",
+      value: "Free Parking",
+    },
+    {
+      id: "paidParking",
+      label: "Paid Parking",
+      value: "Paid Parking",
+    },
+    {
+      id: "outdoorParking",
+      label: "Outdoor Parking",
+      value: "Outdoor Parking",
+    },
+    {
+      id: "indoorParking",
+      label: "Indoor Parking",
+      value: "Indoor Parking",
+    },
+    {
+      id: "valetService",
+      label: "Valet Service",
+      value: "Valet Service",
+    },
+    {
+      id: "dropOffStation",
+      label: "Drop-off Station",
+      value: "Drop-off Station",
+    },
+    {
+      id: "publicRestroom",
+      label: "Public Restroom",
+      value: "Public Restroom",
+    },
+    {
+      id: "familyRestroom",
+      label: "Family Restroom",
+      value: "Family Restroom",
+    },
+    {
+      id: "smokingRoom",
+      label: "Smoking Room",
+      value: "Smoking Room",
+    },
+    {
+      id: "vipRestroom",
+      label: "VIP Restroom",
+      value: "VIP Restroom",
+    },
+    {
+      id: "freeWifi",
+      label: "Free Wifi",
+      value: "Free Wifi",
+    },
+    {
+      id: "paidWifi",
+      label: "Paid Wifi",
+      value: "Paid Wifi",
+    },
+    {
+      id: "noWifi",
+      label: "No Wifi",
+      value: "No Wifi",
+    },
+    {
+      id: "changingRooms",
+      label: "Changing Rooms",
+      value: "Changing Rooms",
+    },
+    {
+      id: "lockers",
+      label: "Lockers",
+      value: "Lockers",
+    }
+  ];
   // const _getAmenities = async () => {
   //   const amenities = await Amenities.getAmenitiesList();
   //   console.log(amenities, "amenities");
@@ -38,10 +141,7 @@ const EventAmenities: FC<EventAmenitiesProps> = ({ eventDetail }) => {
                       className="flex items-center space-x-3"
                     >
                       {/*<i className={`text-3xl las las la-key`}></i>*/}
-                      <img
-                        className="dark:invert border-none w-6 h-6 brightness-150"
-                        src={`${process.env.AWS_CLOUD_FRONT_URL}images/rules/${eventRule?.rule?.image}`}
-                      />
+                      <i className="las la-check text-sm"></i>
                       <span className=" ">{eventRule?.rule?.identifier}</span>
                     </div>
                   </>
@@ -51,9 +151,37 @@ const EventAmenities: FC<EventAmenitiesProps> = ({ eventDetail }) => {
           </div>
           <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
           <div>
-            <ButtonSecondary rounded="rounded-full" className="mt-1">
-              View more 20 Amenities
-            </ButtonSecondary>
+            {!showMoreAmenities && (
+              <ButtonSecondary rounded="rounded-full" className="mt-1" onClick={() => setShowMoreAmenities(true)}>
+                View more 20 Amenities
+              </ButtonSecondary>
+            )}
+          </div>
+
+          {showMoreAmenities && (
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 text-sm text-neutral-6000 dark:text-neutral-300 mb-2">
+              {amenities.map((amenitie) => {
+                  return (
+                    <>
+                      <div
+                        key={amenitie?.id}
+                        className="flex items-center space-x-3"
+                      >
+                        <i className="las la-check text-sm"></i>
+                        <span className=" ">{amenitie?.label}</span>
+                      </div>
+                    </>
+                  );
+                })}
+            </div>
+          )}
+
+          <div>
+            {showMoreAmenities && (
+              <ButtonSecondary rounded="rounded-full" className="mt-1" onClick={() => setShowMoreAmenities(false)}>
+                Less more Amenities
+              </ButtonSecondary>
+            )}
           </div>
         </>
       ) : (

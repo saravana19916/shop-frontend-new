@@ -2,7 +2,7 @@
 import { IEventDetails, IPerformance } from "@/model/IEventDetail";
 import React, { Fragment, FC, useState, useEffect } from "react";
 import Image from "next/image";
-import orderImage from "@/images/floor_plan_1.png";
+import orderImage from "@/images/floor-plan.jpeg";
 import { useTranslation } from "react-i18next";
 
 interface FloorPlanProps {
@@ -22,9 +22,9 @@ const EventFloorPlan: FC<FloorPlanProps> = ({ eventDetail }) => {
           <>
             <div>
               <h2 className="text-2xl font-semibold">{t("floorPlan")}</h2>
-              {/* <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-                you can choose your desired seat by clicking on desired Blocks
-              </span> */}
+              <span className="block mt-2 text-lg font-semibold text-neutral-500 dark:text-neutral-400">
+                {t("floorPlan")}
+              </span>
             </div>
             <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 
@@ -32,9 +32,7 @@ const EventFloorPlan: FC<FloorPlanProps> = ({ eventDetail }) => {
               <Image
                 src={orderImage}
                 alt={t("floorPlan")}
-                width={650}
-                height={250}
-                className="mx-auto"
+                className="mx-auto w-[747px] h-[448px] object-contain"
               />
               {/* <img
                 className="w-full object-cover"

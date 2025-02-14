@@ -100,7 +100,7 @@ const Top10: FC<Top10Props> = ({
       <div className="flex">
         <div onClick={_handleRedirect} className="mt-4 px-2 w-2/5">
           <Image
-            className="mt-3.5 w-12 h-12 object-contain"
+            className="mt-3.5 w-24 h-24 object-contain"
             src={selectedImage}
             alt="Top10"
             priority
