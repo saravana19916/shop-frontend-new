@@ -172,7 +172,7 @@ const LoginComponent: FC<IProps> = ({
               />
             ))}
             <ButtonSecondary
-              className="mb-5 w-full text-sm sm:text-base border border-neutral-200 dark:border-neutral-700"
+              className="mt-6 mb-5 w-full text-sm sm:text-base border border-neutral-200 dark:border-neutral-700"
               rounded="rounded-full"
               bgColor="bg-zinc-100"
               textColor="dark:text-black"

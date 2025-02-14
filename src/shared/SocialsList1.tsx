@@ -16,10 +16,10 @@ export interface SocialsList1Props {
 ];*/
 
 const socials: SocialType[] = [
-  { name: "facebook", icon: "lab la-facebook-square", href: "#" },
-  { name: "twitter", icon: "lab la-twitter", href: "#" },
-  { name: "youtube", icon: "lab la-youtube", href: "#" },
-  { name: "instagram", icon: "lab la-instagram", href: "#" },
+  { name: "facebook", icon: "lab la-facebook-square", href: "https://www.facebook.com/TixboxMENA" },
+  { name: "twitter", icon: "lab la-twitter", href: "https://twitter.com/TixBox" },
+  { name: "youtube", icon: "lab la-youtube", href: "https://www.youtube.com/user/tixboxofficial" },
+  { name: "instagram", icon: "lab la-instagram", href: "https://instagram.com/tixbox" },
 ];
 
 const SocialsList1: FC<SocialsList1Props> = ({ className = "space-y-2.5", socialName = true }) => {

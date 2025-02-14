@@ -159,7 +159,7 @@ const Footer: React.FC = () => {
       <div className="container">
         <div className="py-6 flex border-t border-neutral-200 text-sm/6">
           <span>
-            © 2024{" "}
+            © 2025{" "}
             <a
               href="https://www.tixbox.com"
               className="text-primary-700 hover:underline"

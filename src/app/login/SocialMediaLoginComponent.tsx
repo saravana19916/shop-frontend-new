@@ -42,7 +42,7 @@ const SocialMediaLoginComponent: FC<IProps> = ({
     <>
       <ButtonSecondary
         href={loginUrl}
-        className="mb-5 w-full"
+        className="mt-7 w-full"
         rounded="rounded-full"
         disabled={!loginUrl || isFetchingLoginUrl}
       >

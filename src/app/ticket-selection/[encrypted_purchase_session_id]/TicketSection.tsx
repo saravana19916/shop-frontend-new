@@ -2,7 +2,7 @@ import NcInputNumber from "@/components/NcInputNumber";
 import NcInputNumber2 from "@/components/NcInputNumber2";
 import { IEventDetails, IPerformance } from "@/model/IEventDetail";
 import Image from "next/image";
-import orderImage from "@/images/floor-plan.jpeg";
+import orderImage from "@/images/floor-plan.png";
 import {
   CheckCircleIcon,
   ChevronDownIcon,
@@ -72,7 +72,9 @@ const TicketSection: FC<IProps> = ({
           {selectedPerformances?.tickets?.map((ticket) => (
             <>
               <div className="w-full flex flex-col rounded-2xl border-2 border-gray-550 dark:border-neutral-700 space-y-6 sm:space-y-8 p-2 px-4 pb-3 lg:p-8">
-                <div className="md:grid hidden grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 items-center text-sm text-neutral-700 dark:text-neutral-300">
+                <div className="gap-2 items-center text-sm text-neutral-700 dark:text-neutral-300"
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
                   <div className="gap-6 items-center col-span-1 flex">
                     <div
                       className="w-5 h-5 lg:w-6 lg:h-6 rounded-full hidden md:block"
@@ -88,17 +90,21 @@ const TicketSection: FC<IProps> = ({
                   </div>
 
                   <div className="relative inline-block">
-                    <button className="relative group !rounded-full p-2 bg-gray-200 dark:bg-gray-700">
+                    <button className="relative group !rounded-full p-2">
                       <EyeIcon className="w-5 h-5 text-gray-800 dark:text-gray-200" />
-                      <Image
-                        src={orderImage}
-                        alt="Floor Plan"
-                        className="z-10 absolute left-0 top-full mt-2 w-96 h-auto rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 mx-auto"
-                      />
+                        <div className="absolute left-1/2 top-full mt-2 transform -translate-x-1/2 w-[300px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                        <Image
+                          src={orderImage}
+                          alt="Floor Plan"
+                          width={300}
+                          height={200}
+                          className="rounded-lg shadow-lg"
+                        />
+                      </div>
                     </button>
                   </div>
 
-                  <div className="flex md:justify-center col-span-2 md:col-span-1 md:row-auto row-start-2">
+                  <div>
                     <NcInputNumber2
                       onChange={(value) =>
                         handleCountOnchange(value, ticket?.ticket_id)
@@ -111,7 +117,7 @@ const TicketSection: FC<IProps> = ({
                       isAddingCart={isAddingCart}
                     />
                   </div>
-                  <div className="items-center gap-5 justify-end col-span-1 flex">
+                  <div className="items-center flex">
                     <div className="flex flex-col">
                       <span className="text-base font-semibold">
                         {ticket?.ticket?.payment_currency}{" "}

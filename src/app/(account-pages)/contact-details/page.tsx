@@ -105,7 +105,7 @@ const AccountPhoneNumber = () => {
               />
             </div>
             <div className="w-2/12 flex align-middle justify-center">
-              <div className="font-semibold text-xs p-3 bg-neutral-100 rounded-full px-8 cursor-pointer">
+              <div className="font-semibold text-xs p-3 bg-neutral-100 rounded-full px-8 cursor-pointer dark:text-black">
                 Verify
               </div>
             </div>
@@ -131,7 +131,7 @@ const AccountPhoneNumber = () => {
               />
             </div>
             <div className="w-2/12 flex align-middle justify-center">
-              <div className="font-semibold text-xs p-3 bg-neutral-100 rounded-full px-8 cursor-pointer">
+              <div className="font-semibold text-xs p-3 bg-neutral-100 rounded-full px-8 cursor-pointer dark:text-black">
                 Verify
               </div>
             </div>

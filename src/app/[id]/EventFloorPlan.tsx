@@ -2,7 +2,7 @@
 import { IEventDetails, IPerformance } from "@/model/IEventDetail";
 import React, { Fragment, FC, useState, useEffect } from "react";
 import Image from "next/image";
-import orderImage from "@/images/floor-plan.jpeg";
+import orderImage from "@/images/floor-plan.png";
 import { useTranslation } from "react-i18next";
 
 interface FloorPlanProps {
