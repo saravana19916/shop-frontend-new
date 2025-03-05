@@ -10,20 +10,20 @@ export interface Statistic {
 const FOUNDER_DEMO: Statistic[] = [
   {
     id: "1",
-    heading: "10 million",
+    heading: "4 million",
     subHeading:
-      "Articles have been public around the world (as of Sept. 30, 2021)",
+      "Tickets across the region across all entertainment events in sectors of sports, music, family entertainment, social projects, and many more…",
   },
   {
     id: "2",
-    heading: "100,000",
-    subHeading: "Registered users account (as of Sept. 30, 2021)",
+    heading: "5000",
+    subHeading: "events across our regional and global operations, the majority of which being bespoke projects across the entertainment and sports industry.",
   },
   {
     id: "3",
-    heading: "220+",
+    heading: "300 million",
     subHeading:
-      "Countries and regions have our presence (as of Sept. 30, 2021)",
+      "TixBox has a strong reach in the region and through direct and third-party promotional tools.",
   },
 ];
 
@@ -35,10 +35,10 @@ const SectionStatistic: FC<SectionStatisticProps> = ({ className = "" }) => {
   return (
     <div className={`nc-SectionStatistic relative ${className}`}>
       <Heading
-        desc=" We’re impartial and independent, and every day we create distinctive,
-          world-class programmes and content"
+        desc="TixBox redefines the ticketing experience by merging cutting-edge design
+with top-tier e-commerce services."
       >
-        🚀 Fast Facts
+        🚀 Quick Records
       </Heading>
       <div className="grid md:grid-cols-2 gap-6 lg:grid-cols-3 xl:gap-8">
         {FOUNDER_DEMO.map((item) => (

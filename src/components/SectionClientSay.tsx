@@ -25,10 +25,10 @@ export interface SectionClientSayProps {
 const DEMO_DATA = [
   {
     id: 1,
-    clientName: "Lorem Ipsum",
-    clientAddress: "Malaysia",
+    clientName: "Safir Da",
+    clientAddress: "Oman",
     content:
-      "This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!",
+      "Good service, good staff, warm and welcoming from the ticketing till the end, good job guys!",
   },
   {
     id: 2,
@@ -117,8 +117,8 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
 
   return (
     <div className={`nc-SectionClientSay relative ${className} `}>
-      <Heading desc="Let's see what people think of Chisfis" isCenter>
-        Good news from far away
+      <Heading desc="Real stories and reviews" isCenter>
+        Hear From TixBox Users
       </Heading>
       <div className="relative md:mb-16 max-w-2xl mx-auto">
         {renderBg()}

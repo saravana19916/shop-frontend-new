@@ -7,6 +7,7 @@ import BgGlassmorphism from "@/components/BgGlassmorphism";
 import BackgroundSection from "@/components/BackgroundSection";
 import SectionClientSay from "@/components/SectionClientSay";
 import SectionSubscribe2 from "@/components/SectionSubscribe2";
+import SectionSteps from "./SectionSteps";
 
 export interface PageAboutProps {}
 
@@ -21,10 +22,11 @@ const PageAbout: FC<PageAboutProps> = ({}) => {
           rightImg={rightImg}
           heading="👋 About Us."
           btnText=""
-          subHeading="We’re impartial and independent, and every day we create distinctive, world-class programmes and content which inform, educate and entertain millions of people in the around the world."
+          subHeading="TixBox redefines the ticketing experience by merging cutting-edge design with top-tier e-commerce services. Launched in 2013, we focus on providing a seamless and secure platform for purchasing event tickets."
         />
 
         <SectionFounder />
+        <SectionSteps />
         <div className="relative py-16">
           <BackgroundSection />
           <SectionClientSay />

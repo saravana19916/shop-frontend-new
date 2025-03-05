@@ -16,26 +16,26 @@ export interface People {
 const FOUNDER_DEMO: People[] = [
   {
     id: "1",
-    name: "Lorem Ipsum",
-    job: "Co-founder and Chief Executive",
+    name: "User-friendly",
+    job: "Navigate with ease throught our fun, user-freindly interface",
     avatar: avatar1,
   },
   {
     id: "4",
-    name: `Lorem Ipsum`,
-    job: "Co-founder and Chief Executive",
+    name: `Safe & Sound`,
+    job: "Your transactions are always secure with us",
     avatar: avatar3,
   },
   {
     id: "3",
-    name: `Lorem Ipsum`,
-    job: "Co-founder, Chairman",
+    name: `Friendly Support`,
+    job: "We're here whenever you need a hand",
     avatar: avatar2,
   },
   {
     id: "2",
-    name: `Lorem Ipsum`,
-    job: "Co-Founder, Chief Strategy Officer",
+    name: `Insights on Demand`,
+    job: "Get real-time reports and stay on top of your events",
     avatar: avatar4,
   },
 ];
@@ -44,10 +44,9 @@ const SectionFounder = () => {
   return (
     <div className="nc-SectionFounder relative">
       <Heading
-        desc="We’re impartial and independent, and every day we create distinctive,
-          world-class programmes and content"
+        desc="TixBox redefines the ticketing experience by merging cutting-edge design with top-tier e-commerce services. Launched in 2013, we focus on providing a seamless and secure platform for purchasing event tickets."
       >
-        ⛱ Founder
+        ⛱ Our Core Straights
       </Heading>
       <div className="grid sm:grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4 xl:gap-x-8">
         {FOUNDER_DEMO.map((item) => (
