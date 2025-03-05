@@ -14,7 +14,7 @@ const EventLocation: FC<EventLocationProps> = ({ eventDetail }) => {
         <>
           <div>
             <h2 className="text-2xl font-semibold">{t("location")}</h2>
-            <span className="block mt-2 text-lg font-semibold text-neutral-500 dark:text-neutral-400">
+            <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
               San Diego, CA, United States of America (SAN-San Diego Intl.)
             </span>
           </div>

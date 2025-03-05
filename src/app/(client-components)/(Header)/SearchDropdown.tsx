@@ -152,7 +152,7 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
                 leaveTo="opacity-0 -translate-y-6"
               >
                 <Popover.Panel className="absolute z-20 top-full w-full inset-x-0">
-                  <div className="bg-white dark:bg-neutral-900 ">
+                  <div className="bg-white dark:bg-neutral-900">
                     <Transition
                       show={open}
                       as={Fragment}

@@ -21,6 +21,18 @@ const EmailOTP: FC<EmailOTPProps> = ({
   let [isOpen, setIsOpen] = useState(openOTP);
   const [phone, setPhone] = useState("");
   const [changeSection, setChangeSection] = useState(false);
+  const [otpValues, setOtpValues] = useState(["", "", "", ""]);
+
+  const isButtonDisabled = otpValues.some((val) => val === "");
+
+  const handleOTPInputChange = (index: number, value: string) => {
+    const newOtpValues = [...otpValues];
+    newOtpValues[index] = value;
+    setOtpValues(newOtpValues);
+    console.log(otpValues);
+    console.log(isButtonDisabled);
+  };
+
   function closeModal() {
     setIsOpen(false);
     onChangeStatus(false);
@@ -87,7 +99,17 @@ const EmailOTP: FC<EmailOTPProps> = ({
                           <form action="" method="post">
                             <div className="flex flex-col space-y-16">
                               <div className="flex flex-row items-center justify-between mx-auto w-full max-w-xs gap-4">
-                                <div className="w-16 h-16 ">
+                                {otpValues.map((value, index) => (
+                                  <div key={index} className="w-16 h-16">
+                                    <SingleDigitInput
+                                      value={value}
+                                      onChange={(val) =>
+                                        handleOTPInputChange(index, val)
+                                      }
+                                    />
+                                  </div>
+                                ))}
+                                {/* <div className="w-16 h-16 ">
                                   <SingleDigitInput />
                                 </div>
                                 <div className="w-16 h-16 ">
@@ -98,17 +120,23 @@ const EmailOTP: FC<EmailOTPProps> = ({
                                 </div>
                                 <div className="w-16 h-16 ">
                                   <SingleDigitInput />
-                                </div>
+                                </div> */}
                               </div>
 
                               <div className="flex flex-col space-y-5">
                                 <div>
                                   <button
-                                    className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-primary-6000 border-none text-white text-sm shadow-sm"
+                                    className={`flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 text-white text-sm shadow-sm mt-4
+                                      ${
+                                        isButtonDisabled
+                                          ? "bg-primary-6000 opacity-50 cursor-not-allowed"
+                                          : "bg-primary-6000 hover:opacity-90"
+                                      }`}
                                     onClick={(e) => {
                                       e.preventDefault();
                                       closeModal();
                                     }}
+                                    disabled={isButtonDisabled}
                                   >
                                     Confirm
                                   </button>

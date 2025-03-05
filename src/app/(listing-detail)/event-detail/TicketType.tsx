@@ -38,7 +38,13 @@ const TicketType: FC<ITicketTypeProps> = ({
                 className={`relative z-10 flex-1 flex text-left items-center p-3 space-x-3 focus:outline-none`}
               >
                 <div className="text-neutral-700 dark:text-neutral-400">
-                  <PiReceiptLight className="w-5 h-5 lg:w-7 lg:h-7" />
+                  <div className="text-neutral-700 dark:text-neutral-400">
+                    {
+                      PiReceiptLight({
+                        className: "w-5 h-5 lg:w-7 lg:h-7",
+                      }) as JSX.Element
+                    }
+                  </div>
                 </div>
                 <div className="flex-grow">
                   <span className="block xl:text-lg font-semibold">

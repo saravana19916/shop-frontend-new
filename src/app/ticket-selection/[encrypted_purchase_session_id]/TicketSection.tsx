@@ -92,12 +92,13 @@ const TicketSection: FC<IProps> = ({
                   <div className="relative inline-block">
                     <button className="relative group !rounded-full p-2">
                       <EyeIcon className="w-5 h-5 text-gray-800 dark:text-gray-200" />
-                        <div className="absolute left-1/2 top-full mt-2 transform -translate-x-1/2 w-[300px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+
+                      <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-[500px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                         <Image
                           src={orderImage}
                           alt="Floor Plan"
-                          width={300}
-                          height={200}
+                          width={500}
+                          height={400}
                           className="rounded-lg shadow-lg"
                         />
                       </div>
@@ -171,14 +172,19 @@ const TicketSection: FC<IProps> = ({
                   </div>
 
                   <div className="relative inline-block">
-                    <ButtonPrimary className="relative group !rounded-full">
-                      Floor Plan
-                      <Image
-                        src={orderImage}
-                        alt="Floor Plan"
-                        className="z-10 absolute left-0 top-full mt-2 w-96 h-auto rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 mx-auto"
-                      />
-                    </ButtonPrimary>
+                    <button className="relative group !rounded-full p-2">
+                        <EyeIcon className="w-5 h-5 text-gray-800 dark:text-gray-200" />
+
+                        <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-[500px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                          <Image
+                            src={orderImage}
+                            alt="Floor Plan"
+                            width={500}
+                            height={400}
+                            className="rounded-lg shadow-lg"
+                          />
+                        </div>
+                      </button>
                   </div>
 
                   <div className="flex md:justify-center col-span-2 md:col-span-1 md:row-auto row-start-2">

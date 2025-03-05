@@ -22,7 +22,7 @@ const EventFloorPlan: FC<FloorPlanProps> = ({ eventDetail }) => {
           <>
             <div>
               <h2 className="text-2xl font-semibold">{t("floorPlan")}</h2>
-              <span className="block mt-2 text-lg font-semibold text-neutral-500 dark:text-neutral-400">
+              <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
                 {t("floorPlan")}
               </span>
             </div>
