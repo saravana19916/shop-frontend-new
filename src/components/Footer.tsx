@@ -71,7 +71,7 @@ const widgetMenus: WidgetFooterMenu[] = [
     id: "2",
     title: "Company",
     menus: [
-      { href: "#", label: "About" },
+      { href: "/about", label: "About" },
       { href: "#", label: "Blog" },
       { href: "#", label: "Jobs" },
       { href: "#", label: "Press" },
@@ -135,8 +135,14 @@ const Footer: React.FC = () => {
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8">
               <Logo className="w-full" />
-              <p className="text-balance text-sm/6 text-gray-600 dark:text-neutral-400">Making the world a better place through constructing elegant hierarchies.</p>
-              <SocialsList1 className="flex items-center gap-x-6" socialName={false} />
+              <p className="text-balance text-sm/6 text-gray-600 dark:text-neutral-400">
+                Making the world a better place through constructing elegant
+                hierarchies.
+              </p>
+              <SocialsList1
+                className="flex items-center gap-x-6"
+                socialName={false}
+              />
             </div>
             <div className="mt-16 grid grid-cols-1 gap-8 xl:col-span-2 xl:mt-0">
               <div className="grid grid-cols-2 md:grid md:grid-cols-4 gap-8">
