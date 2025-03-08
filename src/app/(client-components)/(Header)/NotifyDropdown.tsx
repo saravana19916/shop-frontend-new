@@ -92,6 +92,13 @@ const NotifyDropdown: FC<Props> = ({ className = "" }) => {
                         <span className="absolute right-1 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full bg-reddish-500"></span>
                       </a>
                     ))}
+                    <div className="h-[2px] bg-gray-300 dark:bg-gray-600 w-full"></div>
+                    <a
+                      href="/notification"
+                      className="text-center p-3 text-muted"
+                    >
+                      View all Notification
+                    </a>
                   </div>
                 </div>
               </Popover.Panel>
