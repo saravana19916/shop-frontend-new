@@ -30,6 +30,7 @@ const notifications = [
     message: "Shipment is Out for Delivery.",
     avatar: userImage,
     notifyTime: "06:43",
+    badge: { text: "New Deal", color: "bg-green-500" },
   },
   {
     id: 4,
@@ -57,6 +58,7 @@ const notifications = [
     message: "Created New Template for Designing Department.",
     avatar: userImage,
     notifyTime: "14:04",
+    badge: { text: "Last Deal", color: "bg-red-500" },
   },
   {
     id: 7,
@@ -89,44 +91,79 @@ const notifications = [
 
 const NotificationList = () => {
   return (
-    <div className="relative top-10 mb-20 p-5 sm:p-0">
-      <div className="absolute left-[15%] top-0 bottom-0 w-[3px] bg-red-200 hidden md:block"></div>
-
-      <ul className="space-y-6">
-        {notifications.map((item) => (
-          <li key={item.id} className="relative flex flex-col md:flex-row items-start">
-            <div className="w-full md:w-[15%] text-left md:text-right pr-4 mt-7">
-              <div className="text-sm text-gray-500">{item.date}</div>
-              <div className="text-lg font-semibold text-gray-700">{item.time}</div>
-            </div>
-
-            <div className="relative hidden md:flex items-center justify-center w-5 h-5 rounded-full bg-white border-4 border-red-500 hover:border-blue-700 transition-colors duration-200 -ml-2 shadow mt-10">
-              <div className="rounded-full"></div>
-            </div>
-
-            <div className="bg-white shadow-md rounded-lg p-4 w-full md:w-[75%] ml-0 md:ml-4 relative">
-              <div className="flex items-center space-x-3">
-                {item.avatar ? (
-                  <Image src={item.avatar} alt="Avatar" width={40} height={40} className="rounded-full" />
-                ) : (
-                  <span className={`w-10 h-10 flex items-center justify-center rounded-full text-white font-bold ${item.bgColor}`}>
-                    {item.initials}
-                  </span>
-                )}
-
-                <div className="flex flex-col md:flex-row justify-between w-full">
-                  <div>
-                    <p className="font-semibold text-gray-800">{item.user}</p>
-                    <p className="text-sm text-gray-600">{item.message}</p>
-                  </div>
-                  <p className="text-xs text-gray-400 mt-1 md:mt-0">{item.notifyTime}</p>
+    <>
+      <h3 className="lg:container ps-7 my-7">Notification List</h3>
+      <div className="relative mb-10 p-5 sm:p-0">
+        <div className="absolute left-[15%] top-0 bottom-0 w-[3px] bg-red-200 hidden md:block"></div>
+        <ul className="space-y-6">
+          {notifications.map((item) => (
+            <li
+              key={item.id}
+              className="relative flex flex-col md:flex-row items-start"
+            >
+              <div className="w-full md:w-[15%] text-left md:text-right pr-4 mt-[17px]">
+                <div className="text-sm text-gray-500">{item.date}</div>
+                <div className="text-lg font-semibold text-gray-700">
+                  {item.time}
                 </div>
               </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+
+              <div className="relative hidden md:flex items-center justify-center w-5 h-5 rounded-full bg-white border-4 border-red-500 hover:border-blue-700 transition-colors duration-200 -ml-2 shadow mt-[30px]">
+                <div className="rounded-full"></div>
+              </div>
+
+              <div className="bg-white shadow-md rounded-lg p-4 w-full md:w-[75%] ml-0 md:ml-[50px] relative">
+                <div className="flex items-center space-x-3">
+                  {item.avatar ? (
+                    <Image
+                      src={item.avatar}
+                      alt="Avatar"
+                      width={40}
+                      height={40}
+                      className="rounded-lg"
+                    />
+                  ) : (
+                    <span
+                      className={`w-10 h-10 flex items-center justify-center rounded-lg text-white font-bold ${item.bgColor}`}
+                    >
+                      {item.initials}
+                    </span>
+                  )}
+
+                  <div className="flex flex-col md:flex-row justify-between w-full">
+                    <div>
+                      <p className="font-semibold text-gray-800">
+                        {item.user}
+                        {item.badge && (
+                          <span
+                            className={`ms-3 px-2 pb-0.5 mb-1 text-white text-xs font-semibold rounded ${item.badge.color}`}
+                          >
+                            {item.badge.text}
+                          </span>
+                        )}
+                      </p>
+
+                      <p className="text-sm text-gray-600">{item.message}</p>
+                    </div>
+                    <p className="text-xs text-gray-400 mt-1 md:mt-0">
+                      {item.notifyTime}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="text-center mb-10">
+          <button
+            type="button"
+            className="w-40 px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+          >
+            Load more
+          </button>
+        </div>
+    </>
   );
 };
 
