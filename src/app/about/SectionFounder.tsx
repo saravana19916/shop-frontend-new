@@ -43,9 +43,7 @@ const FOUNDER_DEMO: People[] = [
 const SectionFounder = () => {
   return (
     <div className="nc-SectionFounder relative">
-      <Heading
-        desc="TixBox redefines the ticketing experience by merging cutting-edge design with top-tier e-commerce services. Launched in 2013, we focus on providing a seamless and secure platform for purchasing event tickets."
-      >
+      <Heading desc="TixBox redefines the ticketing experience by merging cutting-edge design with top-tier e-commerce services. Launched in 2013, we focus on providing a seamless and secure platform for purchasing event tickets.">
         ⛱ Our Core Straights
       </Heading>
       <div className="grid sm:grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4 xl:gap-x-8">
@@ -64,7 +62,7 @@ const SectionFounder = () => {
             <h3 className="text-lg font-semibold text-neutral-900 mt-4 md:text-xl dark:text-neutral-200">
               {item.name}
             </h3>
-            <span className="block text-sm text-neutral-500 sm:text-base dark:text-neutral-400">
+            <span className="mt-2 block text-sm text-neutral-500 sm:text-base dark:text-neutral-400">
               {item.job}
             </span>
           </div>

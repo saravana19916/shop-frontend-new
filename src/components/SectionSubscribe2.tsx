@@ -60,7 +60,7 @@ const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = "" }) => {
         <h2 className="font-semibold text-4xl">{t("joinOurNewsletter")} 🎉</h2>
         <span className="block mt-5 text-neutral-500 dark:text-neutral-400">
           {t("readAndShareNewPerspectivesOnJustAboutAnyTopic.")}{" "}
-          {t("everyone’sWelcome")}.
+          {/* {t("everyone’sWelcome")}. */}
         </span>
         <ul className="space-y-4 mt-10">
           <li className="flex items-center space-x-4">

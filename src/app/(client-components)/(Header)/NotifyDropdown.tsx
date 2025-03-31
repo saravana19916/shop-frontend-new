@@ -95,7 +95,7 @@ const NotifyDropdown: FC<Props> = ({ className = "" }) => {
 
                   </div>
                   <div className="h-[2px] bg-gray-300 dark:bg-gray-600 w-full"></div>
-                  <div className="text-center my-4">
+                  <div className="text-center bg-white py-4">
                     <a
                         href="/notification"
                         className="text-center py-3 text-muted"

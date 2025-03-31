@@ -16,8 +16,9 @@ const FOUNDER_DEMO: Statistic[] = [
   },
   {
     id: "2",
-    heading: "5000",
-    subHeading: "events across our regional and global operations, the majority of which being bespoke projects across the entertainment and sports industry.",
+    heading: "5,000",
+    subHeading:
+      "events across our regional and global operations, the majority of which being bespoke projects across the entertainment and sports industry.",
   },
   {
     id: "3",
