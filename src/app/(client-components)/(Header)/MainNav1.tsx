@@ -167,7 +167,7 @@ const MainNav1: FC<MainNav1Props> = ({ className = "" }) => {
 
             <div className="px-1" />
             <a href="/signup" className="self-center">
-              <ButtonPrimary className="w-full py-3 sm:px-4 rounded-full rounded-l-full  rounded-r-full">
+              <ButtonPrimary className="w-full py-3 sm:px-4 rounded-full rounded-l-full  rounded-r-full disabled:bg-opacity-70 !bg-reddish-600 hover:bg-primary-6000 font-medium">
                 {t("signUp")}
               </ButtonPrimary>
             </a>

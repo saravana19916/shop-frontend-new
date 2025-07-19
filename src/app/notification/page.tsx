@@ -1,247 +1,164 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
-import userImage from "@/images/1.jpg";
-const notifications = [
-  {
-    id: 1,
-    date: "Today",
-    time: "02:31",
-    user: "Dennis Trexy",
-    initials: "DT",
-    message: "2 Members Accepted your Request.",
-    avatar: userImage,
-    notifyTime: "2 Hrs ago",
-  },
-  {
-    id: 2,
-    date: "Yesterday",
-    time: "18:47",
-    user: "Eileen Dover",
-    message: "Created New Template for Designing Department.",
-    avatar: null,
-    initials: "ED",
-    bgColor: "bg-pink-500",
-    notifyTime: "18:47",
-  },
-  {
-    id: 3,
-    date: "Yesterday",
-    time: "06:43",
-    user: "Elida Distefa",
-    message: "Shipment is Out for Delivery.",
-    avatar: userImage,
-    notifyTime: "06:43",
-    badge: { text: "New Deal", color: "bg-green-500" },
-  },
-  {
-    id: 4,
-    date: "23 Oct",
-    time: "03:15",
-    user: "Harvey Mattos",
-    message: "Mentioned you in a post.",
-    avatar: userImage,
-    notifyTime: "03:15",
-  },
-  {
-    id: 5,
-    date: "15 Oct",
-    time: "12:14",
-    user: "Catrice Doshier",
-    message: "2 Members Accepted your Request.",
-    avatar: userImage,
-    notifyTime: "12:14",
-  },
-  {
-    id: 6,
-    date: "30 Sep",
-    time: "14:04",
-    user: "Mercy Ritia",
-    message: "Created New Template for Designing Department.",
-    avatar: userImage,
-    notifyTime: "14:04",
-    badge: { text: "Last Deal", color: "bg-red-500" },
-  },
-  {
-    id: 7,
-    date: "18 Sep",
-    time: "12:26",
-    user: "Mark Jhon",
-    message: "Shipment is Out for Delivery.",
-    avatar: userImage,
-    notifyTime: "12:26",
-  },
-  {
-    id: 8,
-    date: "03 Sep",
-    time: "05:37",
-    user: "Benedict Vallone",
-    message: "Thanking you for Accepting Request.",
-    avatar: userImage,
-    notifyTime: "05:37",
-  },
-  {
-    id: 9,
-    date: "28 Aug",
-    time: "15:24",
-    user: "Paul Johny",
-    message: "Invited you to a Group.",
-    avatar: userImage,
-    notifyTime: "15:24",
-  },
-  {
-    id: 10,
-    date: "05 Sep",
-    time: "05:40",
-    user: "Benedict Vallone",
-    message: "Thanking you for Accepting Request.",
-    avatar: userImage,
-    notifyTime: "05:37",
-  },
-  {
-    id: 11,
-    date: "20 Oct",
-    time: "15:24",
-    user: "Paul Johny",
-    message: "Invited you to a Group.",
-    avatar: userImage,
-    notifyTime: "15:24",
-  },
-  {
-    id: 12,
-    date: "03 Nov",
-    time: "05:37",
-    user: "Benedict Vallone",
-    message: "Thanking you for Accepting Request.",
-    avatar: userImage,
-    notifyTime: "05:37",
-  },
-  {
-    id: 13,
-    date: "13 Dec",
-    time: "15:24",
-    user: "Paul Johny",
-    message: "Invited you to a Group.",
-    avatar: userImage,
-    notifyTime: "15:24",
-  },
-];
 
-const NotificationList = () => {
-  const [visibleCount, setVisibleCount] = useState(10);
-  const [expanded, setExpanded] = useState(false);
+import { FC, useState } from "react";
+import NotificationDetailsModal, {
+  NotificationDetails,
+} from "./NotificationDetailsModal";
 
-  const handleLoadMore = () => {
-    setVisibleCount((prevCount) =>
-      Math.min(prevCount + 10, notifications.length)
-    );
-    setExpanded(true);
+interface IProps {}
+
+const Notification: FC<IProps> = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalNotificationKey, setModalNotificationKey] = useState("");
+  const [visibleNotifications, setVisibleNotifications] = useState({
+    notify1: true,
+    notify2: true,
+    notify3: true,
+    notify4: true,
+  });
+
+  const [readStatus, setReadStatus] = useState<{ [key: string]: boolean }>({
+    notify1: false,
+    notify2: false,
+    notify3: false,
+    notify4: false,
+  });
+
+  const handleReadMore = (key: string) => {
+    setModalNotificationKey(key);
+    setShowModal(true);
+    setReadStatus((prev) => ({
+      ...prev,
+      [key]: true,
+    }));
   };
 
-  const handleLoadLess = () => {
-    setVisibleCount((prevCount) => Math.max(prevCount - 5, 5));
-    setExpanded(false);
+  const notificationData: NotificationDetails = {
+    title: "Notification Details",
+    time: "April 5, 2025 - 4:00 PM",
+    type: "System Alert",
+    status: readStatus[modalNotificationKey] ? "Read" : "Unread",
+    receivedAt: "April 5, 2025 3:59 PM",
+    message:
+      "Warning! Better check yourself, you're not looking too goodWarning! Better check yourself",
+  };
+
+  const renderNotification = (
+    key: keyof typeof visibleNotifications,
+    iconColor: string,
+    borderColor: string,
+    badgeColor: string
+  ) => {
+    const isRead = readStatus[key];
+    const textColor = isRead
+      ? "text-gray-400"
+      : "text-gray-900 dark:text-[#dedefd]";
+    const iconBackground = isRead ? "bg-gray-200 border" : iconColor;
+    const cardBorder = isRead
+      ? "border-l-4 border-none"
+      : `border-l-4 ${borderColor} dark:border-none`;
+    const readMoreColor = isRead
+      ? "text-blue-800 dark:text-reddish-600"
+      : "text-reddish-600";
+
+    return (
+      visibleNotifications[key] && (
+        <div className="w-full" key={key}>
+          <div
+            className={`flex p-4 mb-4 bg-white shadow rounded-lg ${cardBorder} dark:bg-[#2a2a4a] dark:border-inherit dark:shadow-md dark:text-[#dedefd]`}
+          >
+            <div className="flex-shrink-0">
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center ${iconBackground}`}
+              >
+                <svg
+                  className="w-6 h-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill={isRead ? "#6c757d" : "#ffce6d"}
+                    d="M18,13.18463V10c0-3.31372-2.68628-6-6-6s-6,2.68628-6,6v3.18463C4.83832,13.59863,4.00146,14.69641,4,16v2c0,0.00037,0,0.00073,0,0.00116C4.00031,18.5531,4.44806,19.00031,5,19h14c0.00037,0,0.00073,0,0.00116,0C19.5531,18.99969,20.00031,18.55194,20,18v-2C19.99854,14.69641,19.16168,13.59863,18,13.18463z"
+                  ></path>
+                  <path
+                    fill={isRead ? "#adb5bd" : "#ffae0c"}
+                    d="M8.14233 19c.4472 1.72119 1.99689 2.99817 3.85767 3 1.86078-.00183 3.41046-1.27881 3.85767-3H8.14233zM12 4c.34149 0 .67413.03516 1 .08997V3c0-.55231-.44769-1-1-1s-1 .44769-1 1v1.08997C11.32587 4.03516 11.65851 4 12 4z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <div className="ml-4 flex-1">
+              <div className="flex items-center">
+                <h3 className={`text-md font-medium ${textColor}`}>
+                  New Notification
+                </h3>
+                {!isRead && (
+                  <span
+                    className={`ml-2 text-xs font-medium ${badgeColor} text-white rounded px-2 py-1`}
+                  >
+                    Update
+                  </span>
+                )}
+              </div>
+              <p className={`text-sm mt-1 ${textColor}`}>
+                Warning! Better check yourself, you're not looking too
+                goodWarning! Better check yourself,
+                <button
+                  onClick={() => handleReadMore(key)}
+                  className={`ml-3 hover:underline inline-flex ${readMoreColor}`}
+                >
+                  Read more
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      )
+    );
   };
 
   return (
     <>
-      <main className="mx-2 my-2 lg:mx-8 lg:my-12">
+      <main className="mx-2 my-2 lg:mx-8 lg:my-12 min-h-[50vh]">
         <div className="container">
-          <h2 className="text-3xl lg:text-4xl font-semibold my-16">
-            Notification List
-          </h2>
-          <div className="relative mb-10 p-5 sm:p-0">
-            <div className="absolute left-[15%] top-0 bottom-0 w-[3px] bg-red-200 hidden md:block"></div>
-            <ul className="space-y-6">
-              {notifications.slice(0, visibleCount).map((item) => (
-                <li
-                  key={item.id}
-                  className="relative flex flex-col md:flex-row items-start"
-                >
-                  <div className="w-full md:w-[15%] text-left md:text-right pr-4 mt-[17px]">
-                    <div className="text-sm text-gray-500">{item.date}</div>
-                    <div className="text-lg font-semibold text-gray-700">
-                      {item.time}
-                    </div>
-                  </div>
+          <h2 className="text-3xl font-semibold mt-16 mb-10">Notification</h2>
 
-                  <div className="relative hidden md:flex items-center justify-center w-5 h-5 rounded-full bg-white border-4 border-red-500 hover:border-blue-700 transition-colors duration-200 -ml-2 shadow mt-[30px]">
-                    <div className="rounded-full"></div>
-                  </div>
-
-                  <div className="bg-white shadow-md rounded-lg p-4 w-full md:w-[75%] ml-0 md:ml-[50px] relative mt-1">
-                    <div className="absolute left-[-12px] top-7 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px] border-r-gray-300"></div>
-                    <div className="absolute left-[-10px] top-7 w-0 h-0 border-t-[7px] border-t-transparent border-b-[7px] border-b-transparent border-r-[10px] border-r-white"></div>
-
-                    <div className="flex items-center space-x-3">
-                      {item.avatar ? (
-                        <Image
-                          src={item.avatar}
-                          alt="Avatar"
-                          width={40}
-                          height={40}
-                          className="rounded-lg"
-                        />
-                      ) : (
-                        <span
-                          className={`w-10 h-10 flex items-center justify-center rounded-lg text-white font-bold ${item.bgColor}`}
-                        >
-                          {item.initials}
-                        </span>
-                      )}
-
-                      <div className="flex flex-col md:flex-row justify-between w-full">
-                        <div>
-                          <p className="font-semibold text-gray-800">
-                            {item.user}
-                            {item.badge && (
-                              <span
-                                className={`ms-3 px-2 pb-0.5 mb-1 text-white text-xs font-semibold rounded ${item.badge.color}`}
-                              >
-                                {item.badge.text}
-                              </span>
-                            )}
-                          </p>
-
-                          <p className="text-sm text-gray-600">
-                            {item.message}
-                          </p>
-                        </div>
-                        <p className="text-xs text-gray-400 mt-1 md:mt-0">
-                          {item.notifyTime}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="text-center mb-10 space-x-4">
-            {!expanded && (
-              <button
-                type="button"
-                onClick={handleLoadMore}
-                className="w-[118px] px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700"
-              >
-                Load More
-              </button>
+          <div className="max-w-4xl space-y-6">
+            {renderNotification(
+              "notify1",
+              "bg-yellow-100 dark:bg-[rgba(255,162,43,0.1)]",
+              "border-yellow-500",
+              "bg-green-600"
             )}
-            {expanded && (
-              <button
-                type="button"
-                onClick={handleLoadLess}
-                className="w-[118px] px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700"
-              >
-                Load Less
-              </button>
+            {renderNotification(
+              "notify2",
+              "bg-green-100 dark:bg-[rgba(22,163,74,0.1)]",
+              "border-green-600",
+              "bg-green-600"
+            )}
+            {renderNotification(
+              "notify3",
+              "bg-red-100 dark:bg-[rgba(220,38,38,0.1)]",
+              "border-red-600",
+              "bg-red-600"
+            )}
+            {renderNotification(
+              "notify4",
+              "bg-blue-100 dark:bg-[rgba(59,130,246,0.1)]",
+              "border-blue-600",
+              "bg-blue-600"
             )}
           </div>
+
+          <NotificationDetailsModal
+            show={showModal}
+            handleClose={() => setShowModal(false)}
+            data={notificationData}
+          />
         </div>
       </main>
     </>
   );
 };
 
-export default NotificationList;
+export default Notification;

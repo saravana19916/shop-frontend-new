@@ -111,23 +111,23 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
                   <DatePicker
                     // selected={startDate}
                     key={startDate?.getTime() || "initial"}
-                    onChange={(date) => setStartDate(date)}
-                    onSelect={(e) => {
-                      handleChange(e);
+                    onChange={(date) => {
+                      setStartDate(date);
+                      handleChange(date);
                       close();
                     }}
                     monthsShown={2}
                     showPopperArrow={false}
                     inline
-                    minDate={
-                      new Date(moment(showsStartDate).format("YYYY-MM-01"))
-                    }
-                    maxDate={
-                      new Date(
-                        moment(showsEndDate).format("YYYY-MM-") +
-                          moment(showsEndDate).daysInMonth()
-                      )
-                    }
+                    // minDate={
+                    //   new Date(moment(showsStartDate).format("YYYY-MM-01"))
+                    // }
+                    // maxDate={
+                    //   new Date(
+                    //     moment(showsEndDate).format("YYYY-MM-") +
+                    //       moment(showsEndDate).daysInMonth()
+                    //   )
+                    // }
                     showDisabledMonthNavigation={false}
                     includeDates={enableDates?.map((x) => new Date(x))}
                     renderCustomHeader={(p) => (
@@ -138,8 +138,8 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
                         startDate,
                         "day"
                       );
-                      const isEnableDate = enableDates.some((enableDate) =>
-                        moment(date).isSame(enableDate, "day")
+                      const isEnableDate = enableDates?.some((enableDate) =>
+                        moment(date).isSame(moment(enableDate), "day")
                       );
                       const opacity = isEnableDate ? 1 : 0.5;
 
@@ -147,7 +147,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
                         <div
                           className={`rounded-full cursor-pointer ${
                             isSelectedDate
-                              ? "text-white"
+                              ? "text-white bg-reddish-600 "
                               : isEnableDate
                               ? " bg-red-200 dark:bg-red-200 dark:text-black"
                               : ""

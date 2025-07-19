@@ -135,7 +135,7 @@ const NumberCard: FC<NumberCardProps> = ({
               </h2>
             </Tooltip>
             <span className="mt-1 text-sm text-neutral-6000 dark:text-neutral-400 capitalize">
-              {event!.event!.venue!.detail!.address.toLowerCase()}
+              {event?.event?.venue?.detail?.address?.toLowerCase()}
             </span>
           </div>
         </div>

@@ -33,7 +33,6 @@ import { ToastContainer } from "react-toastify";
 export default function RootLayout({
   children,
   params,
-  className = "dark",
 }: {
   children: React.ReactNode;
   params: any;
@@ -53,7 +52,7 @@ export default function RootLayout({
   }, []);
 
   return (
-    <html lang="en" className={className}>
+    <html lang="en" className="dark">
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link

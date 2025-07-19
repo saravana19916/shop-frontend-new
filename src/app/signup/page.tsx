@@ -382,7 +382,7 @@ const PageSignUp: FC<PageSignUpProps> = ({}) => {
                 disabled={isLoading}
               />
               <div
-                  className="font-semibold text-xs bg-neutral-100 rounded-full px-9 py-3.5 cursor-pointer dark:text-black"
+                  className="font-semibold text-xs p-3 rounded-full px-8 cursor-pointer bg-neutral-100 text-black dark:bg-[#1DB954] dark:text-white hover:dark:bg-[#1AA34A]"
                 >
                   Verify
                 </div>

@@ -72,9 +72,10 @@ const TicketSection: FC<IProps> = ({
           {selectedPerformances?.tickets?.map((ticket) => (
             <>
               <div className="w-full flex flex-col rounded-2xl border-2 border-gray-550 dark:border-neutral-700 space-y-6 sm:space-y-8 p-2 px-4 pb-3 lg:p-8">
-                <div className="gap-2 items-center text-sm text-neutral-700 dark:text-neutral-300"
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
+                <div
+                  className="gap-2 items-center text-sm text-neutral-700 dark:text-neutral-300"
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
                   <div className="gap-6 items-center col-span-1 flex">
                     <div
                       className="w-5 h-5 lg:w-6 lg:h-6 rounded-full hidden md:block"
@@ -173,18 +174,18 @@ const TicketSection: FC<IProps> = ({
 
                   <div className="relative inline-block">
                     <button className="relative group !rounded-full p-2">
-                        <EyeIcon className="w-5 h-5 text-gray-800 dark:text-gray-200" />
+                      <EyeIcon className="w-5 h-5 text-gray-800 dark:text-gray-200" />
 
-                        <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-[500px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                          <Image
-                            src={orderImage}
-                            alt="Floor Plan"
-                            width={500}
-                            height={400}
-                            className="rounded-lg shadow-lg"
-                          />
-                        </div>
-                      </button>
+                      <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 w-[500px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                        <Image
+                          src={orderImage}
+                          alt="Floor Plan"
+                          width={500}
+                          height={400}
+                          className="rounded-lg shadow-lg"
+                        />
+                      </div>
+                    </button>
                   </div>
 
                   <div className="flex md:justify-center col-span-2 md:col-span-1 md:row-auto row-start-2">
@@ -220,8 +221,8 @@ const TicketSection: FC<IProps> = ({
 
                 {viewTicket === ticket?.ticket_id ? (
                   <>
-                    <div className="w-full flex flex-col border border-neutral-100 dark:border-neutral-700 md:p-8 p-3 rounded-2xl bg-zinc-350">
-                      <span className="font-light mt-3 mb-5 text-sm dark:text-gray-900">
+                    <div className="w-full flex flex-col border border-neutral-100 dark:border-neutral-700 md:p-8 p-3 rounded-2xl bg-zinc-350 dark:bg-black">
+                      <span className="font-light mt-3 mb-5 text-sm ">
                         <span className="font-semibold">Age Limit: &nbsp;</span>
                         {eventDetail?.data?.age_policy ? (
                           `above ${eventDetail?.data?.age_policy} years of age`
@@ -232,7 +233,7 @@ const TicketSection: FC<IProps> = ({
                         )}
                       </span>
                       <div className="lg:w-11/12 w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-                      <h3 className="text-sm font-semibold mt-5 mb-5 dark:text-gray-900">
+                      <h3 className="text-sm font-semibold mt-5 mb-5 ">
                         Inclusions
                       </h3>
                       <div className="lg:w-11/12 w-full flex flex-wrap gap-4 mb-2">

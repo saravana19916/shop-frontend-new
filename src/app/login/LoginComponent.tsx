@@ -136,10 +136,9 @@ const LoginComponent: FC<IProps> = ({
                 Sign In{" "}
               </ButtonPrimary>
               <ButtonSecondary
-                className="lg:w-1/3 w-2/5 py-3 sm:px-4 rounded-full rounded-l-full  rounded-r-full ms-4"
-                borderColor="border-black"
-                bgColor="bg-black dark:bg-white"
-                textColor="text-white dark:text-black"
+                className="lg:w-1/3 w-2/5 py-3 sm:px-4 rounded-full rounded-l-full  rounded-r-full ms-4 border-black dark:border-neutral-700"
+                bgColor="bg-white dark:bg-black"
+                textColor="text-black dark:text-white"
                 type="button"
                 href="/signup"
               >
@@ -174,8 +173,8 @@ const LoginComponent: FC<IProps> = ({
             <ButtonSecondary
               className="mt-6 mb-5 w-full text-sm sm:text-base border border-neutral-200 dark:border-neutral-700"
               rounded="rounded-full"
-              bgColor="bg-zinc-100"
-              textColor="dark:text-black"
+              bgColor="bg-zinc-100 dark:bg-black"
+              textColor="text-black dark:text-white"
               borderColor="border-transparent"
               href="/home"
             >
@@ -192,7 +191,7 @@ const LoginComponent: FC<IProps> = ({
             <Link href="/signup" className="font-medium text-primary-6000">
               Register Now
             </Link>{" "}
-            and receive a complementary add on on your first purchase with us
+            and receive a complementary add-on on your first purchase with us
           </span>
         </div>
       </div>

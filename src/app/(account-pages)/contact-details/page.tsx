@@ -85,7 +85,7 @@ const AccountPhoneNumber = () => {
                 value={phoneNumber || ""}
                 autoFormat={false}
                 placeholder=""
-                inputClass="rounded w-full mt-1.5"
+                inputClass="rounded-full w-full !border-neutral-200 focus:!border-primary-200 dark:!border-neutral-700 dark:focus:!ring-primary-6000 dark:focus:!ring-opacity-25"
                 inputStyle={{
                   minWidth: "100%",
                   borderRadius: "50px",
@@ -95,17 +95,15 @@ const AccountPhoneNumber = () => {
                 buttonStyle={{
                   borderStartStartRadius: "50px",
                   borderEndStartRadius: "50px",
-                  backgroundColor: "#fff",
-                  borderStartEndRadius: "0",
-                  borderEndEndRadius: "0",
-                  borderInlineEnd: 0,
-                  paddingLeft: "10px",
+                  paddingRight: "5px",
                 }}
-                dropdownClass="rounded-xl"
+                buttonClass="!bg-white !border-neutral-200 dark:!bg-neutral-900 dark:!border-neutral-700 pe-1"
               />
             </div>
             <div className="w-2/12 flex align-middle justify-center">
-              <div className="font-semibold text-xs p-3 bg-neutral-100 rounded-full px-8 cursor-pointer dark:text-black">
+              <div
+                className="font-semibold text-xs p-3 rounded-full px-8 cursor-pointer bg-neutral-100 text-black dark:bg-[#1DB954] dark:text-white hover:dark:bg-[#1AA34A]"
+              >
                 Verify
               </div>
             </div>
@@ -131,7 +129,7 @@ const AccountPhoneNumber = () => {
               />
             </div>
             <div className="w-2/12 flex align-middle justify-center">
-              <div className="font-semibold text-xs p-3 bg-neutral-100 rounded-full px-8 cursor-pointer dark:text-black">
+              <div className="font-semibold text-xs p-3 rounded-full px-8 cursor-pointer bg-neutral-100 text-black dark:bg-[#1DB954] dark:text-white hover:dark:bg-[#1AA34A]">
                 Verify
               </div>
             </div>

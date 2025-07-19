@@ -11,6 +11,7 @@ import Response from "@/model/response";
 import { error } from "console";
 import { useTranslation } from "react-i18next";
 import { closeNavbarCartDropDown } from "@/actions/NavBar";
+import { ChatBubbleBottomCenterIcon, BellIcon } from "@heroicons/react/24/outline";
 interface Props {
   className?: string;
 }
@@ -29,7 +30,7 @@ export default function AvatarDropdown({ className = "" }: Props) {
   const [email, setEmail] = useState("");
 
   const [country, setCountry] = useState("");
-  
+
   const [profilePic, setProfilePic] = useState("");
 
   const redirectToLogin = () => {
@@ -55,9 +56,11 @@ export default function AvatarDropdown({ className = "" }: Props) {
         );
         setEmail(user.user.email);
         setCountry(user.user.profile.country.name);
-        if(user.user.profile.image_file_name != undefined) {
+        if (user.user.profile.image_file_name != undefined) {
           setProfilePic(
-            process.env.AWS_CLOUD_FRONT_URL + "images/users/" + user.user.profile.image_file_name
+            process.env.AWS_CLOUD_FRONT_URL +
+              "images/users/" +
+              user.user.profile.image_file_name
           );
         } else {
           setProfilePic("");
@@ -99,10 +102,7 @@ export default function AvatarDropdown({ className = "" }: Props) {
               onMouseEnter={_handleCloseCartPopover}
               className={`self-center w-10 h-10 sm:w-12 sm:h-12 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none flex items-center justify-center`}
             >
-              <Avatar 
-                sizeClass="w-8 h-8 sm:w-9 sm:h-9"
-                imgUrl={profilePic}
-              />
+              <Avatar sizeClass="w-8 h-8 sm:w-9 sm:h-9" imgUrl={profilePic} />
             </Popover.Button>
             <Transition
               as={Fragment}
@@ -117,10 +117,7 @@ export default function AvatarDropdown({ className = "" }: Props) {
                 <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid grid-cols-1 gap-6 bg-white dark:bg-neutral-800 py-7 px-6">
                     <div className="flex items-center space-x-3">
-                      <Avatar 
-                        sizeClass="w-12 h-12"
-                        imgUrl={profilePic}
-                      />
+                      <Avatar sizeClass="w-12 h-12" imgUrl={profilePic} />
 
                       <div className="flex-grow w-12">
                         <h4 className="font-semibold truncate">{name}</h4>
@@ -242,6 +239,31 @@ export default function AvatarDropdown({ className = "" }: Props) {
                       </div>
                       <div className="ml-4">
                         <p className="text-sm font-medium ">{t("wishlist")}</p>
+                      </div>
+                    </Link>
+                    <Link
+                      href={"/chat"}
+                      className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                      onClick={() => close()}
+                    >
+                      <div className="flex items-center justify-center flex-shrink-0 text-neutral-500 dark:text-neutral-300">
+                        <ChatBubbleBottomCenterIcon className="w-6 h-6" />
+                      </div>
+                      <div className="ml-4">
+                        <p className="text-sm font-medium ">Chat</p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href={"/notification"}
+                      className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                      onClick={() => close()}
+                    >
+                      <div className="flex items-center justify-center flex-shrink-0 text-neutral-500 dark:text-neutral-300">
+                        <BellIcon className="w-6 h-6" />
+                      </div>
+                      <div className="ml-4">
+                        <p className="text-sm font-medium ">Notification</p>
                       </div>
                     </Link>
 

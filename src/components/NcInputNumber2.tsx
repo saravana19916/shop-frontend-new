@@ -36,7 +36,7 @@ const NcInputNumber2: FC<IProps> = ({
   return (
     <>
       <div
-        className={`nc-NcInputNumber flex items-center justify-between w-28 rounded-xl p-1 bg-zinc-250 ${
+        className={`nc-NcInputNumber flex items-center justify-between w-28 rounded-xl p-1 bg-zinc-250 dark:bg-black ${
           isAddingCart ? "" : ""
         }`}
       >
@@ -46,9 +46,13 @@ const NcInputNumber2: FC<IProps> = ({
           onClick={handleClickDecrement}
           disabled={min >= value}
         >
-          <MinusIcon className="w-4 h-4 text-black" />
+          <MinusIcon className="w-4 h-4 text-black dark:text-white" />
         </button>
-        <span className={`text-black ${isAddingCart ? "animate-pulse" : ""}`}>
+        <span
+          className={`text-black dark:text-white ${
+            isAddingCart ? "animate-pulse" : ""
+          }`}
+        >
           {initialValue}
         </span>
         <button
@@ -57,7 +61,7 @@ const NcInputNumber2: FC<IProps> = ({
           onClick={handleClickIncrement}
           disabled={max ? max <= value : false}
         >
-          <PlusIcon className="w-4 h-4 text-black" />
+          <PlusIcon className="w-4 h-4 text-black dark:text-white" />
         </button>
       </div>
     </>

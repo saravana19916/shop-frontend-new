@@ -1,13 +1,12 @@
 "use client";
 
-import ButtonPrimary from "@/shared/ButtonPrimary";
 import ButtonSecondary from "@/shared/ButtonSecondary";
 import { convertSankCaseToNormalCase } from "@/utils/helpers";
 import placeHolderImg from "@/images/placeholder-small.png";
 
 import moment from "moment";
-import Image from "next/image";
 import React, { FC, useState } from "react";
+import RequestRefundModal from "./RequestRefundModal";
 
 export interface MyOrdersCard {
   className?: string;
@@ -20,7 +19,6 @@ const MyOrdersCard: FC<MyOrdersCard> = ({ className = "", ticket }) => {
   const currentImage: any = ticket?.event?.galleries[0]?.img_name
     ? thumbnailURL + ticket?.event?.galleries[0]?.img_name
     : placeHolderImg;
-  console.log(ticket, "ticket");
 
   function categorizeTickets(data) {
     // Create a map to hold the grouped ticket data
@@ -127,10 +125,10 @@ const MyOrdersCard: FC<MyOrdersCard> = ({ className = "", ticket }) => {
                 {ticketCategory?.map((order: any) => (
                   <>
                     <div className="flex justify-between text-neutral-600 font-medium">
-                      <span>
+                      <span className="text-neutral-6000 dark:text-neutral-400">
                         {order?.quantity}&nbsp; x &nbsp; {order?.identifier}
                       </span>
-                      <span>
+                      <span className="text-neutral-6000 dark:text-neutral-400">
                         {order?.currency}{" "}
                         {(order?.quantity * order?.price_per_item).toFixed(2)}
                       </span>
@@ -141,14 +139,18 @@ const MyOrdersCard: FC<MyOrdersCard> = ({ className = "", ticket }) => {
               <div className="border border-b text-neutral-600 my-4"></div>
               <div className="space-y-1">
                 <div className="flex justify-between text-neutral-600 font-medium">
-                  <span>Process Fee</span>
-                  <span>
+                  <span className="text-neutral-6000 dark:text-neutral-400">
+                    Process Fee
+                  </span>
+                  <span className="text-neutral-6000 dark:text-neutral-400">
                     {currency} {totalProcessFee?.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between text-neutral-600 font-medium">
-                  <span>Service Charge</span>
-                  <span>
+                  <span className="text-neutral-6000 dark:text-neutral-400">
+                    Service Charge
+                  </span>
+                  <span className="text-neutral-6000 dark:text-neutral-400">
                     {currency} {totalServiceFee?.toFixed(2)}
                   </span>
                 </div>
@@ -157,9 +159,14 @@ const MyOrdersCard: FC<MyOrdersCard> = ({ className = "", ticket }) => {
               <div className="space-y-1">
                 <div className="flex justify-between text-neutral-600 font-medium">
                   <span className="w-3/5 flex justify-between">
-                    <span>VAT</span> <span>5%</span>
+                    <span className="text-neutral-6000 dark:text-neutral-400">
+                      VAT
+                    </span>{" "}
+                    <span className="text-neutral-6000 dark:text-neutral-400">
+                      5%
+                    </span>
                   </span>
-                  <span>
+                  <span className="text-neutral-6000 dark:text-neutral-400">
                     {currency} {vat?.toFixed(2)}
                   </span>
                 </div>
@@ -194,25 +201,41 @@ const MyOrdersCard: FC<MyOrdersCard> = ({ className = "", ticket }) => {
     const handleAddToWallet = () => {
       window.open("https://wallet.google/", "_blank");
     };
+
+    const [showRequestRefundModal, setShowRequestRefundModal] =
+      useState<boolean>(false);
+
+    const handleRequestrefund = () => {
+      setShowRequestRefundModal(true);
+    };
+
+    const handleRequestRefundModal = () =>
+      setShowRequestRefundModal((prev) => !prev);
+
     if (!isOpen) return null;
     return (
       <>
-        <div className="p-5 md:p-8 bg-zinc-100 rounded-lg ">
+        <RequestRefundModal
+          show={showRequestRefundModal}
+          handleClose={handleRequestRefundModal}
+        />
+
+        <div className="p-5 md:p-8 bg-neutral-100 dark:bg-neutral-600 dark:bg-opacity-20 rounded-lg ">
           {renderDetailTop()}
         </div>
         <div className="w-full lg:w-10/12 xl:w-9/12 flex flex-col sm:rounded-2xl space-y-10 px-0 ps-14 p-6">
-          <div className="flex flex-col sm:flex-row item-center gap-3">
+          <div className="flex flex-col sm:flex-row items-center gap-3">
             <ButtonSecondary
               //   onClick={toPDF}
               rounded="rounded-full"
               sizeClass="w-full py-3 sm:px-4"
               // textColor="text-black"
               borderColor="border-0"
-              bgColor="bg-grey-350"
+              bgColor="bg-neutral-100 dark:bg-neutral-600 dark:bg-opacity-20"
               fontWeight="font-semibold"
               fontSize="text-sm"
             >
-              Download Booking{" "}
+              <span className="whitespace-nowrap">Download Booking</span>
             </ButtonSecondary>
             <ButtonSecondary
               onClick={handleAddToCalendar}
@@ -221,10 +244,10 @@ const MyOrdersCard: FC<MyOrdersCard> = ({ className = "", ticket }) => {
               // textColor="text-black"
               borderColor="border-0"
               fontWeight="font-semibold"
-              bgColor="bg-grey-350"
+              bgColor="bg-neutral-100 dark:bg-neutral-600 dark:bg-opacity-20"
               fontSize="text-sm"
             >
-              Add to Calendar
+              <span className="whitespace-nowrap"> Add to Calendar</span>
             </ButtonSecondary>
             <ButtonSecondary
               onClick={handleAddToWallet}
@@ -233,10 +256,32 @@ const MyOrdersCard: FC<MyOrdersCard> = ({ className = "", ticket }) => {
               borderColor="border-0"
               // textColor="text-black"
               fontWeight="font-semibold"
-              bgColor="bg-grey-350"
+              bgColor="bg-neutral-100 dark:bg-neutral-600 dark:bg-opacity-20"
               fontSize="text-sm"
             >
-              Add to Wallet
+              <span className="whitespace-nowrap">Add to Wallet</span>
+            </ButtonSecondary>
+            <ButtonSecondary
+              onClick={handleRequestrefund}
+              rounded="rounded-full"
+              sizeClass="w-full py-3 sm:px-4"
+              borderColor="border-0"
+              fontWeight="font-semibold"
+              bgColor="bg-neutral-100 dark:bg-neutral-600 dark:bg-opacity-20"
+              fontSize="text-sm"
+            >
+              <span className="whitespace-nowrap">Request Refund</span>
+            </ButtonSecondary>
+            <ButtonSecondary
+              onClick={() => {}}
+              rounded="rounded-full"
+              sizeClass="w-full py-3 sm:px-4"
+              borderColor="border-0"
+              fontWeight="font-semibold"
+              bgColor="bg-neutral-100 dark:bg-neutral-600 dark:bg-opacity-20"
+              fontSize="text-sm"
+            >
+              <span className="whitespace-nowrap">Chat with Organizer</span>
             </ButtonSecondary>
           </div>
         </div>
