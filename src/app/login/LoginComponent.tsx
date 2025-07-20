@@ -29,6 +29,8 @@ const LoginComponent: FC<IProps> = ({
 }) => {
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const { isDarkMode } = useThemeMode();
 
   const loginSocials = [
@@ -47,7 +49,35 @@ const LoginComponent: FC<IProps> = ({
       brand: "google",
     },
   ];
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const password = (form.elements.namedItem("password") as HTMLInputElement).value;
+
+    setEmailError("");
+    setPasswordError("");
+
+    if (!email) {
+      setEmailError("The email field is required.");
+    } else if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address.");
+    }
+
+    if (!password) {
+      setPasswordError("The password field is required.");
+    }
+
+    if (email && password && validateEmail(email)) {
+      handleLogin(e);
+    }
+  };
   return (
     <>
       <div className="container my-20">
@@ -58,7 +88,7 @@ const LoginComponent: FC<IProps> = ({
             <h2 className="font-semibold ms-3 mb-4">
               Already have an account?
             </h2>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleSubmit}>
               <div className="mb-6">
                 <Input
                   type="text"
@@ -69,9 +99,7 @@ const LoginComponent: FC<IProps> = ({
                   disabled={isLogging}
                   sizeClass="p-4 lg:ps-8 ps-4"
                 />
-                {response && response!.error && response!.error!.email && (
-                  <div className="text-red-600"> {response.error.email} </div>
-                )}
+                {emailError && <div className="text-red-600 mt-1">{emailError}</div>}
               </div>
               <div className="mb-6 relative">
                 <Input
@@ -120,12 +148,7 @@ const LoginComponent: FC<IProps> = ({
                     </svg>
                   )}
                 </button>
-
-                {response && response!.error && response!.error!.password && (
-                  <div className="text-red-600 mt-1">
-                    {response.error.password}
-                  </div>
-                )}
+                {passwordError && <div className="text-red-600 mt-1">{passwordError}</div>}
               </div>
 
               <ButtonPrimary
