@@ -102,52 +102,48 @@ const LoginComponent: FC<IProps> = ({
                 {emailError && <div className="text-red-600 mt-1">{emailError}</div>}
               </div>
               <div className="mb-6 relative">
-                <Input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  rounded="rounded-full"
-                  className="mt-1 bg-zinc-100 border-0 pr-12"
-                  disabled={isLogging}
-                  placeholder="Password"
-                  sizeClass="p-4 lg:ps-8 ps-4"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-4 flex items-center justify-center text-gray-500 hover:text-gray-700 focus:outline-none"
-                  aria-label={showPassword ? "Hide password" : "Show password"}
-                >
-                  {showPassword ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="w-6 h-6"
-                    >
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  ) : (
+                <div className="flex items-center relative">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    rounded="rounded-full"
+                    className="mt-1 bg-zinc-100 border-0 pr-12"
+                    disabled={isLogging}
+                    placeholder="Password"
+                    sizeClass="p-4 lg:ps-8 ps-4"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-4 flex items-center justify-center text-gray-500 hover:text-gray-700 focus:outline-none"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {/* Eye Icon */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
-                      className="w-5 h-5"
+                      className={`w-6 h-6 transition-transform duration-300 ${showPassword ? 'rotate-0' : 'rotate-180'}`}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 5c-7.731 0-12 7-12 7s4.269 7 12 7 12-7 12-7-4.269-7-12-7zM12 15c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"
-                      />
+                      {showPassword ? (
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                        />
+                      ) : (
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 5c-7.731 0-12 7-12 7s4.269 7 12 7 12-7 12-7-4.269-7-12-7zM12 15c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"
+                        />
+                      )}
                     </svg>
-                  )}
-                </button>
+                  </button>
+                </div>
+
                 {passwordError && <div className="text-red-600 mt-1">{passwordError}</div>}
               </div>
 
@@ -194,14 +190,14 @@ const LoginComponent: FC<IProps> = ({
               />
             ))}
             <ButtonSecondary
-              className="mt-6 mb-5 w-full text-sm sm:text-base border border-neutral-200 dark:border-neutral-700"
+              className="mt-7 w-full text-sm sm:text-base border border-neutral-200 dark:border-neutral-700"
               rounded="rounded-full"
               bgColor="bg-zinc-100 dark:bg-black"
               textColor="text-black dark:text-white"
               borderColor="border-transparent"
               href="/home"
             >
-              <h3 className="text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm py-0.5">
+              <h3 className="text-center text-sm font-medium text-neutral-700 dark:text-neutral-300 sm:text-sm py-0.6">
                 <>&nbsp; &nbsp; </>Continue as
                 <span className="font-bold ms-2">Guest</span>
               </h3>
