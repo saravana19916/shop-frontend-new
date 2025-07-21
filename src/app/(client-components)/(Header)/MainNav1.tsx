@@ -71,6 +71,17 @@ const MainNav1: FC<MainNav1Props> = ({ className = "" }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  
+    React.useEffect(() => {
+      const handleScroll = () => {
+        setIsDropdownOpen(false);
+        setIsLangDropdownOpen(false);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
   const capitalizeWords = (str) => {
     return str.toLowerCase().replace(/\b\w/g, function (char) {
       return char.toUpperCase();

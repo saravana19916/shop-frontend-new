@@ -50,8 +50,16 @@ const MainNav2: FC<MainNav2Props> = ({ className = "" }) => {
   const pathname = usePathname();
   const dropdownRef = React.useRef(null);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  
+  const NotifyDropdownRef = React.useRef(null);
+  const [isNotifyDropdownOpen, setIsNotifyDropdownOpen] = React.useState(false);
+  
   const langDropdownRef = React.useRef(null);
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+
+  const AvatarDropdownRef = React.useRef(null);
+  const [ isAvatarDropdownOpen, setIsAvatarDropdownOpen] = useState(false);
+  
   const user: any | undefined | null = AuthService.authUser();
   const [eventDataSet, setEventDataSet] = useState<IEventDataSetForSearch[]>(
     []
@@ -66,6 +74,16 @@ const MainNav2: FC<MainNav2Props> = ({ className = "" }) => {
       if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
         setIsLangDropdownOpen(false);
       }
+
+      if (NotifyDropdownRef.current && !NotifyDropdownRef.current.contains(event.target as Node)) {
+        setIsNotifyDropdownOpen(false);
+      }
+
+      if (AvatarDropdownRef.current && !AvatarDropdownRef.current.contains(event.target as Node)) {
+        setIsAvatarDropdownOpen(false);
+      }
+
+      
     };
 
     document.addEventListener("click", handleClickOutside);
@@ -73,6 +91,18 @@ const MainNav2: FC<MainNav2Props> = ({ className = "" }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsDropdownOpen(false);
+      setIsLangDropdownOpen(false);
+      setIsNotifyDropdownOpen(false);
+      setIsAvatarDropdownOpen(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const capitalizeWords = (str) => {
     return str.toLowerCase().replace(/\b\w/g, function (char) {
       return char.toUpperCase();
@@ -95,6 +125,15 @@ const MainNav2: FC<MainNav2Props> = ({ className = "" }) => {
   const handleLangToggleDropdown = () => {
     setIsLangDropdownOpen(!isLangDropdownOpen);
   };
+
+  const handleNotifyToggleDropdown = () => {
+    setIsNotifyDropdownOpen(!isNotifyDropdownOpen);
+  };
+
+  const handleAvatarToggleDropdown = () => {
+    setIsAvatarDropdownOpen(!isAvatarDropdownOpen);
+  };
+
 
   return (
     <div className={`nc-MainNav2 relative z-10 ${className}`}>
@@ -180,9 +219,13 @@ const MainNav2: FC<MainNav2Props> = ({ className = "" }) => {
               <>
                 {user ? (
                   <>
-                    <NotifyDropdown />
+                    <NotifyDropdown isOpen={isNotifyDropdownOpen}
+                      onToggle={handleNotifyToggleDropdown}
+                           dropdownRef={NotifyDropdownRef}  />
 
-                    <AvatarDropdown />
+                    <AvatarDropdown  isOpen={isAvatarDropdownOpen}
+                      onToggle={handleAvatarToggleDropdown}
+                           dropdownRef={AvatarDropdownRef}/>
                   </>
                 ) : (
                   <>
