@@ -50,21 +50,27 @@ const MainNav2: FC<MainNav2Props> = ({ className = "" }) => {
   const pathname = usePathname();
   const dropdownRef = React.useRef(null);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const langDropdownRef = React.useRef(null);
+  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
   const user: any | undefined | null = AuthService.authUser();
   const [eventDataSet, setEventDataSet] = useState<IEventDataSetForSearch[]>(
     []
   );
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsDropdownOpen(false);
+      } 
+
+      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
+        setIsLangDropdownOpen(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
   const capitalizeWords = (str) => {
@@ -82,6 +88,14 @@ const MainNav2: FC<MainNav2Props> = ({ className = "" }) => {
     if (eventId) push(`/${eventId}`);
   };
 
+  const handleToggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLangToggleDropdown = () => {
+    setIsLangDropdownOpen(!isLangDropdownOpen);
+  };
+
   return (
     <div className={`nc-MainNav2 relative z-10 ${className}`}>
       <div className="px-4 lg:container h-20 flex justify-between">
@@ -89,7 +103,9 @@ const MainNav2: FC<MainNav2Props> = ({ className = "" }) => {
           <Logo className="w-16 self-center" />
 
           <div className="hidden lg:flex">
-            <DropdownTravelers title="tickets" menuItems={dropdownItems1} />
+            <DropdownTravelers title="tickets" menuItems={dropdownItems1} isOpen={isDropdownOpen}
+              onToggle={handleToggleDropdown}
+              dropdownRef={dropdownRef} />
           </div>
 
           {/* <div className="hidden lg:flex">
@@ -142,7 +158,9 @@ const MainNav2: FC<MainNav2Props> = ({ className = "" }) => {
           <div className="hidden xl:flex space-x-0.5">
             <SwitchDarkMode />
             {/*<TemplatesDropdown />*/}
-            <LangDropdown />
+            <LangDropdown isOpen={isLangDropdownOpen}
+              onToggle={handleLangToggleDropdown}
+              dropdownRef={langDropdownRef} />
             <SearchDropdown className="flex items-center" />
             {/* <Link
               href={"/add-listing" as Route<string>}
