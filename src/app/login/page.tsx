@@ -135,7 +135,7 @@ const PageLogin: FC<PageLoginProps> = ({ loginoption = false }) => {
             response={response}
             showAlert={showAlert}
             handleLogin={handleLogin}
-            isLogging={isLoading}
+            isLoading={isLoading}
           />
         </>
       )}

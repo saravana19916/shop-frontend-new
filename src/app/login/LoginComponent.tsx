@@ -11,21 +11,21 @@ import React, { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useThemeMode } from "@/utils/useThemeMode";
-
+import LoadingSpinner from "@/components/LoadingSpinner";
 import SocialMediaLoginComponent from "./SocialMediaLoginComponent";
 
 interface IProps {
   response: any;
   showAlert: boolean;
   handleLogin: (event: React.FormEvent<HTMLFormElement>) => void;
-  isLogging: boolean;
+  isLoading: boolean;
 }
 
 const LoginComponent: FC<IProps> = ({
   handleLogin,
   showAlert,
   response,
-  isLogging,
+  isLoading,
 }) => {
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
@@ -81,6 +81,7 @@ const LoginComponent: FC<IProps> = ({
   return (
     <>
       <div className="container my-20">
+        {isLoading && <LoadingSpinner/> }
         <AlertSection response={response} show={showAlert} />
 
         <div className="flex flex-col md:flex-row items-center justify-center xl:px-44 lg:px-24">
@@ -96,7 +97,7 @@ const LoginComponent: FC<IProps> = ({
                   placeholder="Email address or Mobile Number"
                   rounded="rounded-full"
                   className="mt-1 bg-zinc-100 border-0"
-                  disabled={isLogging}
+                  disabled={isLoading}
                   sizeClass="p-4 lg:ps-8 ps-4"
                 />
                 {emailError && <div className="text-red-600 mt-1">{emailError}</div>}
@@ -108,7 +109,7 @@ const LoginComponent: FC<IProps> = ({
                     name="password"
                     rounded="rounded-full"
                     className="mt-1 bg-zinc-100 border-0 pr-12"
-                    disabled={isLogging}
+                    disabled={isLoading}
                     placeholder="Password"
                     sizeClass="p-4 lg:ps-8 ps-4"
                   />
@@ -151,6 +152,7 @@ const LoginComponent: FC<IProps> = ({
                 className="lg:w-1/3 w-2/5 py-3 sm:px-4 rounded-full rounded-l-full  rounded-r-full"
                 textColor="text-white"
                 type="submit"
+                disabled={isLoading}
               >
                 Sign In{" "}
               </ButtonPrimary>
@@ -159,6 +161,7 @@ const LoginComponent: FC<IProps> = ({
                 bgColor="bg-white dark:bg-black"
                 textColor="text-black dark:text-white"
                 type="button"
+                disabled={isLoading}
                 href="/signup"
               >
                 Register
