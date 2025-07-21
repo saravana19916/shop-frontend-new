@@ -48,7 +48,12 @@ const CreditAndDebitCardPanel: FC<ICreditAndDebitCardPanel> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFieldValue(name, value);
+    if (name === "paymentDetails.cardHolder") {
+      const formattedValue = value.replace(/[^a-zA-Z\s]/g, '');
+      setFieldValue(name, formattedValue);
+    } else {
+      setFieldValue(name, value);
+    }
   };
 
   const { t } = useTranslation();
