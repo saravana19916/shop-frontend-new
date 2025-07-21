@@ -182,7 +182,11 @@ const CartSection: FC<IProps> = ({
             }`}
             borderColor="border-0"
             fontSize="text-md"
-            textColor="text-white"
+            textColor={`${
+              ticketSelection === "Best Available Seats"
+                ? "text-[#111827]"
+                : "text-white"
+            }`}
             disabled={ticketSelection === "Best Available Seats"}
             onClick={_handleStorePerformance}
           >
@@ -203,7 +207,11 @@ const CartSection: FC<IProps> = ({
             }`}
             borderColor="border-0"
             fontSize="text-md"
-            textColor="text-white"
+            textColor={`${
+              ticketSelection !== "Best Available Seats"
+                ? "text-[#111827]"
+                : "text-white"
+            }`}
             disabled={ticketSelection !== "Best Available Seats"}
             onClick={_handleStorePerformance}
           >
