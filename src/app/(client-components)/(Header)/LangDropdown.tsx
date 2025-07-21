@@ -210,7 +210,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
               <div className="p-3 sm:p-6 rounded-2xl bg-white dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5">
                 <Tab.Group>
                   <Tab.List className="flex space-x-1 rounded-full bg-gray-100 dark:bg-slate-700 p-1">
-                    {["currency"].map((category) => (
+                    {["language", "currency"].map((category) => (
                       <Tab
                         key={category}
                         className={({ selected }) =>
@@ -228,14 +228,14 @@ const LangDropdown: FC<LangDropdownProps> = ({
                     ))}
                   </Tab.List>
                   <Tab.Panels className="mt-5">
-                    {/* <Tab.Panel
+                    <Tab.Panel
                       className={classNames(
                         "rounded-xl p-3",
                         "focus:outline-none focus:ring-0"
                       )}
                     >
                       {renderLang(close)}
-                    </Tab.Panel> */}
+                    </Tab.Panel>
                     <Tab.Panel
                       className={classNames(
                         "rounded-xl p-3",
@@ -252,7 +252,6 @@ const LangDropdown: FC<LangDropdownProps> = ({
         </>
       )}
     </Popover>
-
   );
 };
 
