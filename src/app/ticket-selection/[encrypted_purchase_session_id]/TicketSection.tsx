@@ -85,12 +85,12 @@ const TicketSection: FC<IProps> = ({
                         }`,
                       }}
                     ></div>
-                    <span className="text-base font-semibold">
+                    <span className="text-base font-semibold" style={{ minWidth: '70px' }}>
                       {ticket?.ticket?.identifier}
                     </span>
                   </div>
 
-                  <div className="relative inline-block">
+                  <div className="relative inline-flex items-center justify-center">
                     <button className="relative group !rounded-full p-2">
                       <EyeIcon className="w-5 h-5 text-gray-800 dark:text-gray-200" />
 
