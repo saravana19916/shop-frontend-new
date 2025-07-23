@@ -73,9 +73,9 @@ export const headerLanguage = [
 interface LangDropdownProps {
   panelClassName?: string;
   className?: string;
-  isOpen: boolean;
-  onToggle: () => void;
-  dropdownRef: RefObject<HTMLDivElement>;
+  isOpen?: boolean;
+  onToggle?: () => void;
+  dropdownRef?: RefObject<HTMLDivElement>;
 }
 
 function classNames(...classes: any) {

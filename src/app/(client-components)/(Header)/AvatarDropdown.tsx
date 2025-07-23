@@ -15,9 +15,9 @@ import { ChatBubbleBottomCenterIcon, BellIcon } from "@heroicons/react/24/outlin
 
 interface Props {
   className?: string;
-  isOpen: boolean;
-  onToggle: () => void;
-  dropdownRef: RefObject<HTMLDivElement>;
+  isOpen?: boolean;
+  onToggle?: () => void;
+  dropdownRef?: RefObject<HTMLDivElement>;
 }
 
 export default function AvatarDropdown({ className = "", isOpen, onToggle, dropdownRef }: Props) {

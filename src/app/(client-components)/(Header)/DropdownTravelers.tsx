@@ -10,9 +10,9 @@ import { useTranslation } from "react-i18next";
 export interface DropdownTravelersProps {
   title?: string;
   menuItems?: MenuItem[];
-  isOpen: boolean;
-  onToggle: () => void;
-  dropdownRef: RefObject<HTMLDivElement>;
+  isOpen?: boolean;
+  onToggle?: () => void;
+  dropdownRef?: RefObject<HTMLDivElement>;
 }
 
 const DropdownTravelers: FC<DropdownTravelersProps> = ({
